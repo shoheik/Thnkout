@@ -1,9 +1,20 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
+<div class="content">
+  <h1> thnkout <span id="subtitle"> "A plantform for thinking and outputing" </span></h1>
+
+  <br>
+
+
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+    <li class="animate-repeat" ng-repeat="topic in topics">
+      <h3>
+        <span class="badge badge-success">お題数:{{ topic.numOfOpinion}}</span>
+        <span class="badge badge-warning">
+         意見数:{{topic.numOfSubTopic}}</span><br>
+        {{ topic.title}}
+      </h3>
+      <button class="pure-button pure-button-success">お題作成</button>
+      <button class="pure-button pure-button-secondary">意見を言う</button>
+    </li>
+  <ul>
 </div>
+
