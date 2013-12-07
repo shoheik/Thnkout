@@ -1,0 +1,65 @@
+<h1>MECE</h1>
+<h2> Topic: {{ data.topic.name }} </h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <select ng-model="strategy_name" ng-change="selectStrategy()" class="form-control">
+      <option ng-repeat="strategy in strategies">{{ strategy.name }}</option>
+    </select>
+  </div>
+  <div class="col-md-9">
+    {{ strategy.description }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default" ng-repeat="(strategy, content) in data.topic.strategies">
+      <div class="panel-heading"> {{ strategy }} : {{ content.description }} </div>
+      <div class="panel-body">
+        <div class="panel panel-default" ng-repeat="(approach, ideas) in content.approaches">
+          <div class="panel-heading"> {{ approach }} </div>
+            <div id="input_area" class="row">
+              <div class="col-md-8">
+                <textarea class="form-control" rows="2" ng-model="out"></textarea>
+              </div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-success" ng-click="send(out, strategy, approach)">Add</button>
+              </div>
+            </div>
+          <div class="panel-body">
+            <div ng-repeat="idea in ideas">
+              {{ idea.user}} : {{ idea.last_update }} : {{ idea.thoughts }}
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default" ng-repeat="angle in angles">
+      <div class="panel-heading"> {{ angle }} </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-9">
+            <textarea class="form-control" rows="2" ng-model="issue"></textarea>
+            <div ng-repeat="issue in output[angle]">
+              {{ issue }}
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-success" ng-click="send(issue, angle)">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,17 @@
+<div class="content">
+  <h1> thnkout <span id="subtitle"> "A plantform for thinking and outputing" </span></h1>
+
+  <br>
+  <ul>
+    <li class="animate-repeat" ng-repeat="topic in topics">
+      <h3>
+        <span class="badge badge-success">お題数:{{ topic.numOfOpinion}}</span>
+        <span class="badge badge-warning">
+         意見数:{{topic.numOfSubTopic}}</span>
+        {{ topic.title}}
+      </h3>
+      <a href="#/output" class="pure-button pure-button-success">think out</a>
+    </li>
+  <ul>
+</div>
+

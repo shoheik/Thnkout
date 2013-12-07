@@ -29,6 +29,10 @@ body {
     margin-bottom: 3px;
 }
 
+#input_area{
+  margin: 10px 5px 0px 10px;
+}
+/*
 li .pure-button-success,
 li .pure-button-secondary {
     color: white;
@@ -44,6 +48,7 @@ li .pure-button-success {
 li .pure-button-secondary {
    background: rgb(66, 184, 221);
 }
+*/
 
 .badge {
   padding: 1px 9px 2px;
