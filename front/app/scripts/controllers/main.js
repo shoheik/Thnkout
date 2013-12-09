@@ -21,8 +21,9 @@ angular.module('thnkoutApp')
           "finance",
           "engineering"
         ],
-        strategies: {
-          SWOT: {
+        strategies: [
+          {
+            name: "SWOT",
             description: "Strength, Weakness, Opportunity anad Threat",
             approaches: {
               Strength: [
@@ -59,8 +60,17 @@ angular.module('thnkoutApp')
                 }
               ]
             }
+          },
+          {
+            name: "5W1H",
+            description: "what, why,,,",
+            approaches: {
+              What: [],
+              When: [],
+              How: []
+            }
           }
-        }
+        ]
       }
     }
 

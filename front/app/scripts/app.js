@@ -3,7 +3,8 @@
 angular.module('thnkoutApp', [
   'ngCookies',
   'ngResource',
-  'ngSanitize'
+  'ngSanitize',
+  'thnkoutFilters'
 ])
   .config(function ($routeProvider) {
     $routeProvider

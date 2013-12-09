@@ -20,18 +20,15 @@
     <button type="submit" class="btn btn-success" ng-click="send(out, strategy_name, approach_name)">Add</button>
   </div>
 </div>
+  {{ strategy_name}} {{ approach_name}}
 <hr>
 <div class="row">
   <div class="col-md-12">
-    <div class="panel panel-default" ng-repeat="(strategy, content) in data.topic.strategies">
-      <div class="panel-heading"> {{ strategy }} : {{ content.description }} </div>
+    <div class="panel panel-default" ng-repeat="strategy in data.topic.strategies | strategyFilter:strategy_name" >
+      <div class="panel-heading"> {{ strategy.name }} : {{ strategy.description }} </div>
       <div class="panel-body">
-        <div class="panel panel-default" ng-repeat="(approach, ideas) in content.approaches">
+        <div class="panel panel-default" ng-repeat="(approach, ideas) in strategy.approaches">
           <div class="panel-heading"> {{ approach }} </div>
-
-
-
-
           <div class="panel-body">
             <div ng-repeat="idea in ideas">
               {{ idea.user}} : {{ idea.last_update }} : {{ idea.thoughts }}
