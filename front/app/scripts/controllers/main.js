@@ -25,7 +25,7 @@ angular.module('thnkoutApp')
           SWOT: {
             description: "Strength, Weakness, Opportunity anad Threat",
             approaches: {
-              strength: [
+              Strength: [
                 {
                   user: "kamesho",
                   thoughts: "relatively good salary",
@@ -37,21 +37,21 @@ angular.module('thnkoutApp')
                   last_update: "201312050800"
                 }
               ],
-              weakness: [
+              Weakness: [
                 {
                   user: "kamesho",
                   thoughts: "worry about the layoff during recession",
                   last_update: "201312071100"
                 }
               ],
-              opportunity:[
+              Opportunity:[
                 {
                   user: "kamesho",
                   thoughts: "a few but it can be if you wish",
                   last_update: "201312071100"
                 }
               ],
-              threat:[
+              Threat:[
                 {
                   user: "kamesho",
                   thoughts: "totally depending on the economy",
@@ -64,28 +64,16 @@ angular.module('thnkoutApp')
       }
     }
 
-    $scope.strategies = [
-      {
-        name: "5W1H",
-      },
-      {
-        name: "SWOT",
-      }
-    ];
+    $scope.strategies = ["SWOT", "5W1H"];
 
-    $scope.desc = {
-      "SWOT": "Strength, Weakness, Opportunity anad Threat",
-      "5W1H":  "What Where When Who Why and How"
-    }
-
-    var group = {
+    $scope.approaches = {
       "SWOT": ["Strength", "Weakness" , "Opportunity", "Threat"],
       "5W1H": ["What", "Where", "When", "Who", "How"]
-    }
+    };
 
     $scope.selectStrategy = function() {
       //alert($scope.strategy_name);
-      $scope.angles = group[$scope.strategy_name];
+      //$scope.angles = group[$scope.strategy_name];
     };
 
     $scope.issues = ["issue1", "issue2"];
@@ -95,6 +83,9 @@ angular.module('thnkoutApp')
 
     // need who and where
     $scope.send = function (output, strategy, approach){
+      console.log(output);
+      console.log(strategy);
+      console.log(approach);
       var idea ={};
       idea.user = "kamesho";
       var d = new Date();

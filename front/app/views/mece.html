@@ -2,13 +2,22 @@
 <h2> Topic: {{ data.topic.name }} </h2>
 
 <div class="row">
-  <div class="col-md-3">
+
+  <div class="col-md-2">
     <select ng-model="strategy_name" ng-change="selectStrategy()" class="form-control">
-      <option ng-repeat="strategy in strategies">{{ strategy.name }}</option>
+      <option ng-repeat="strategy in strategies">{{ strategy }}</option>
     </select>
   </div>
-  <div class="col-md-9">
-    {{ strategy.description }}
+  <div class="col-md-2">
+    <select ng-model="approach_name" ng-change="selectApproach()" class="form-control">
+      <option ng-repeat="approach in approaches[strategy_name]">{{ approach }}</option>
+    </select>
+  </div>
+  <div class="col-md-7">
+    <textarea class="form-control" rows="2" ng-model="out"></textarea>
+  </div>
+  <div class="col-md-1">
+    <button type="submit" class="btn btn-success" ng-click="send(out, strategy_name, approach_name)">Add</button>
   </div>
 </div>
 <hr>
@@ -19,14 +28,10 @@
       <div class="panel-body">
         <div class="panel panel-default" ng-repeat="(approach, ideas) in content.approaches">
           <div class="panel-heading"> {{ approach }} </div>
-            <div id="input_area" class="row">
-              <div class="col-md-8">
-                <textarea class="form-control" rows="2" ng-model="out"></textarea>
-              </div>
-              <div class="col-md-4">
-                <button type="submit" class="btn btn-success" ng-click="send(out, strategy, approach)">Add</button>
-              </div>
-            </div>
+
+
+
+
           <div class="panel-body">
             <div ng-repeat="idea in ideas">
               {{ idea.user}} : {{ idea.last_update }} : {{ idea.thoughts }}
