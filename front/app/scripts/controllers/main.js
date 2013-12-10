@@ -101,8 +101,15 @@ angular.module('thnkoutApp')
       var d = new Date();
       idea.last_update = d.toString();
       idea.thoughts = output;
-      console.log($scope.data.topic.strategies[strategy].approaches[approach]);
-      $scope.data.topic.strategies[strategy].approaches[approach].push(idea);
+
+      for(var i in $scope.data.topic.strategies){
+        if ( $scope.data.topic.strategies[i].name == strategy){
+          console.log($scope.data.topic.strategies[i].approaches[approach]);
+          $scope.data.topic.strategies[i].approaches[approach].push(idea);
+        }
+      }
+
+
     }
 
   })
