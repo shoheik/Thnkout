@@ -21,9 +21,8 @@ angular.module('thnkoutApp')
           "finance",
           "engineering"
         ],
-        strategies: [
-          {
-            name: "SWOT",
+        strategies: {
+          "SWOT": {
             description: "Strength, Weakness, Opportunity anad Threat",
             approaches: {
               Strength: [
@@ -61,8 +60,7 @@ angular.module('thnkoutApp')
               ]
             }
           },
-          {
-            name: "5W1H",
+          "5W1H":{
             description: "what, why,,,",
             approaches: {
               What: [],
@@ -70,15 +68,16 @@ angular.module('thnkoutApp')
               How: []
             }
           }
-        ]
+        }
       }
     }
 
-    $scope.strategies = ["SWOT", "5W1H"];
+    $scope.strategies = ["SWOT", "5W1H", "5W2H"];
 
     $scope.approaches = {
       "SWOT": ["Strength", "Weakness" , "Opportunity", "Threat"],
-      "5W1H": ["What", "Where", "When", "Who", "How"]
+      "5W1H": ["What", "Where", "When", "Who", "How"],
+      "5W2H": ["What", "Where", "When", "Who", "How", "How much"]
     };
 
     $scope.selectStrategy = function() {
@@ -102,12 +101,16 @@ angular.module('thnkoutApp')
       idea.last_update = d.toString();
       idea.thoughts = output;
 
-      for(var i in $scope.data.topic.strategies){
-        if ( $scope.data.topic.strategies[i].name == strategy){
-          console.log($scope.data.topic.strategies[i].approaches[approach]);
-          $scope.data.topic.strategies[i].approaches[approach].push(idea);
-        }
+      if (typeof $scope.data.topic.strategies[strategy] === "undefined"){
+        var apprch = {};
+        apprch[approach] = [];
+        $scope.data.topic.strategies[strategy] = { approaches : apprch };
+      }else if (typeof $scope.data.topic.strategies[strategy].approaches[approach] === "undefined"){
+        $scope.data.topic.strategies[strategy].approaches[approach] = [];
       }
+      //console.log($scope.data.topic);
+      console.log($scope.data.topic.strategies[strategy].approaches[approach]);
+      $scope.data.topic.strategies[strategy].approaches[approach].unshift(idea);
 
 
     }

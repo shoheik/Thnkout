@@ -4,13 +4,18 @@ angular.module('thnkoutFilters', [])
             //console.log(strategy);
             //console.log(input);
             var filtered = [];
-            angular.forEach(input, function(item) {
-                if (item.name == strategy){
-                    filtered.push(item);
+            for(var key in input){
+                if (key === strategy){
+                    filtered.push(input[key]);
                 }
-                //console.log(item.name)
-            });
+            }
             return filtered;
+            //angular.forEach(input, function() {
+            //    console.log(key);
+            //    if (key == strategy){
+            //        filtered.push(value);
+            //    }
+            //});
         };
     })
     //.filter('approachFilter',function(){

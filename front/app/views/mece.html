@@ -25,7 +25,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default" ng-repeat="strategy in data.topic.strategies | strategyFilter:strategy_name" >
-      <div class="panel-heading"> {{ strategy.name }} : {{ strategy.description }} </div>
+      <div class="panel-heading"> {{ strategy_name }} : {{ strategy.description }} </div>
       <div class="panel-body">
         <div class="panel panel-default" ng-repeat="(approach, ideas) in strategy.approaches">
           <div class="panel-heading"> {{ approach }} </div>
