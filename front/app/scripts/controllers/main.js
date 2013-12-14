@@ -111,8 +111,6 @@ angular.module('thnkoutApp')
       //console.log($scope.data.topic);
       console.log($scope.data.topic.strategies[strategy].approaches[approach]);
       $scope.data.topic.strategies[strategy].approaches[approach].unshift(idea);
-
-
     }
 
   })
