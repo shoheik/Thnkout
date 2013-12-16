@@ -13,6 +13,10 @@ The reason why we need this app is as following.
  - MongoDB to add the contents
  - MySQL to keep user's info
 
+### 
+
+ - /topic/<topicID>
+
 ### Data strcuture
 
     "topicID": {

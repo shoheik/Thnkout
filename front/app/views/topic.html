@@ -1,8 +1,7 @@
-<h1>ThnkOut</h1>
-<h2> Topic: {{ data.topic.name }} </h2>
-
-<div class="row">
-
+<div class="container">
+  {{ topicID }}
+  <h2> Topic: {{ data.topic.name }} </h2>
+  <div class="row">
   <div class="col-md-2">
     <select ng-model="strategy_name" ng-change="selectStrategy()" class="form-control">
       <option ng-repeat="strategy in strategies">{{ strategy }}</option>
@@ -43,5 +42,4 @@
 
 <button type="button" class="btn btn-success btn-lg btn-block">Summary</button>
 <br>
-
-
+</div>

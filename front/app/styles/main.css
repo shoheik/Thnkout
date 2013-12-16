@@ -32,6 +32,13 @@ body {
 #input_area{
   margin: 10px 5px 0px 10px;
 }
+
+#title {
+  font-size: 30px;
+  color: black;
+  font-family: arial;
+  font-weight: bold;
+}
 /*
 li .pure-button-success,
 li .pure-button-secondary {

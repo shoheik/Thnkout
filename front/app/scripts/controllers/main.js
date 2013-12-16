@@ -1,19 +1,47 @@
 'use strict';
 
 angular.module('thnkoutApp')
-  .controller('MainCtrl', function ($scope, TopicGenerator) {
+  .controller('MainCtrl', function ($scope, TopicGenerator, $location, $http) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
     $scope.topics = TopicGenerator.getTopics();
+
+    $scope.createTopic = function(topic){
+      console.log(topic);
+      $http.post('/api/v1/topic', { topic: topic }).
+      //$http({method: 'POST', url: '/api/v1/topic', data: JSON.stringify({topic_name: topic})})
+      success(function(data,status,headers,config){
+        console.log(data);
+      });
+      //$location.path( "/topic" );
+    };
+
   })
   .controller('OutputCtrl', function ($scope) {
   })
-  .controller('MeceCtrl', function ($scope) {
+  .controller('TopicCtrl', function ($scope, $routeParams, $http) {
 
-    // This is the dataset from server
+    // Get parameter on URL
+    $scope.topicID = $routeParams.topicID
+    var topicURL =  '/api/v1/topic/' + $routeParams.topicID;
+
+    // GET /api/v1/topic/:topicID
+    $http({method: 'GET', url: topicURL }).
+    success(function(data, status, headers, config) {
+      console.log(data);
+      // this callback will be called asynchronously
+      // when the response is available
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+
+
     $scope.data = {
       topic :{
         name: "Become financial engineer",

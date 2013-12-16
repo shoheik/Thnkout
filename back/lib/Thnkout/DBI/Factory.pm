@@ -6,6 +6,20 @@ use Carp ();
 use Scope::Container::DBI;
 use Thnkout::Config;
 
+use MongoDB;
+use MongoDB::OID;
+
+has mongodb => (
+    is => 'ro',
+    lazy => 1,
+    builder => '_build_mongodb'
+);
+
+sub _build_mongodb{
+    my $client = MongoDB::MongoClient->new;
+    return $client->get_database('thnkout'); 
+}
+
 sub dbconfig {
     my ($self, $name) = @_;
     my $dbconfig = config->param('db') // Carp::croak 'required db setting';
@@ -35,6 +49,11 @@ sub query_builder {
         driver => 'mysql',
     );
     return $builder;
+}
+
+sub mongodbh {
+    my ($self, $name) = @_;
+    return $self->mongodb->get_collection($name);
 }
 
 1;

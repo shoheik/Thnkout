@@ -20,9 +20,9 @@ angular.module('thnkoutApp', [
         templateUrl: 'views/view.html',
         controller: 'ViewCtrl'
       })
-      .when('/mece', {
-        templateUrl: 'views/mece.html',
-        controller: 'MeceCtrl'
+      .when('/topic/:topicID', {
+        templateUrl: 'views/topic.html',
+        controller: 'TopicCtrl'
       })
       //.otherwise({
       //  redirectTo: '/'

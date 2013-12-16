@@ -27,7 +27,24 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <a href="#"><span id="title">Thnkout</span></a>
+          <em> "The way to think and output"</em>
+        </div>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="./">Sign In</a></li>
+          <li><a href="../navbar-static-top/">Help</a></li>
+          <li><a href="../navbar-fixed-top/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

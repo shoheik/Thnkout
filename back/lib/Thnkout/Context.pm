@@ -3,6 +3,7 @@ package Thnkout::Context;
 use utf8;
 use Moo;
 use Try::Tiny;
+use Thnkout::DBI::Factory;
 use Thnkout::Config;
 use Thnkout::Request;
 use Thnkout::Error;

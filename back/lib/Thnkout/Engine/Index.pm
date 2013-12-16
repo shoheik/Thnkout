@@ -10,7 +10,8 @@ sub default {
     print Dumper $context;
     #$context->render();
     #$context->plain_text('this', 'is', 'test');
-    $context->html('index.html', { name => 'shohei' });
+    #$context->html('index.html', { name => 'shohei' });
+    $context->redirect("/static/index.html");
 
     #my $user = $c->user;
     #return $c->html('index.html') unless $user;

@@ -13,6 +13,17 @@ sub make_router {
             action => 'default',
         };
 
+        connect '/api/v1/topic/:topic_id' => {
+            engine => 'APIv1',
+            action => 'get_topic',
+        };
+
+        connect '/api/v1/topic' => {
+            engine => 'APIv1',
+            action => 'post_topic',
+        } => { method => 'POST' };
+
+
         connect '/bookmark' => {
             engine => 'Bookmark',
             action => 'default',
@@ -22,6 +33,7 @@ sub make_router {
             engine => 'Bookmark',
             action => 'add_get',
         } => { method => 'GET' };
+
         connect '/bookmark/add' => {
             engine => 'Bookmark',
             action => 'add_post',

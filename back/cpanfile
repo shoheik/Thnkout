@@ -19,3 +19,4 @@ requires 'Encode';
 requires 'DateTime';
 requires 'DateTime::Format::MySQL';
 requires 'JSON::Types';
+requires 'MongoDB';
