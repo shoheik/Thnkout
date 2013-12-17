@@ -16,6 +16,7 @@ angular.module('thnkoutApp')
       //$http({method: 'POST', url: '/api/v1/topic', data: JSON.stringify({topic_name: topic})})
       success(function(data,status,headers,config){
         console.log(data);
+        $location.path("/topic/" + data.id);
       });
       //$location.path( "/topic" );
     };
@@ -33,6 +34,7 @@ angular.module('thnkoutApp')
     $http({method: 'GET', url: topicURL }).
     success(function(data, status, headers, config) {
       console.log(data);
+      $scope.data.topic = data;
       // this callback will be called asynchronously
       // when the response is available
     }).

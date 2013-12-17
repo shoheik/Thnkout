@@ -10,10 +10,9 @@ use Log::Minimal;
 sub get_topic {
     my ($self, $context) = @_;
     my $topic_id = $context->route->{topic_id};
-    print Dumper $topic_id;
-    #print Dumper $context;
-    my $topic = Thnkout::Service::Topic->find_topic($context->db, $topic_id);
-    print Dumper $topic;
+    debugf "Got $topic_id";
+    my $topic = Thnkout::Service::Topic->find_topic_by_id($context->db, $topic_id);
+    $topic->{_id} = $topic->{_id}->to_string;
     $context->json($topic);
 }
 
@@ -23,9 +22,9 @@ sub post_topic {
     my $data = decode_json $context->request->content;
     debugf $data->{topic} . "is POST'ed";
     my $oid = Thnkout::Service::Topic->create_topic($context->db, $data->{topic});
-    my $id = $oid->to_string;
-    debugf "$id is created for the new topic";
-    $context->json({id => $id});
+    #my $id = $oid->to_string;
+    debugf $oid->to_string . " is created for the new topic";
+    $context->json({id => $oid->to_string });
 }
 
 sub default {

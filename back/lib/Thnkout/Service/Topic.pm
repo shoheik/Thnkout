@@ -6,12 +6,11 @@ use Carp;
 use DateTime;
 use Data::Dumper;
 
-sub find_topic {
+sub find_topic_by_id {
     my ($self, $db, $topic_id ) = @_;
-    my $cursor = $db->mongodbh('topic')->find({name => "test1"});
-    #print Dumper $cursor->all;
+    my $cursor = $db->mongodbh('topic')->find({_id => MongoDB::OID->new(value => $topic_id)});
     my @obj = $cursor->all;
-    return \@obj;
+    return $obj[0];
 }
 
 sub create_topic {
