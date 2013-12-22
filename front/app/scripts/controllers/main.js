@@ -24,6 +24,79 @@ angular.module('thnkoutApp')
   })
   .controller('OutputCtrl', function ($scope) {
   })
+  // controler to colletion information for the thinking
+  .controller('InformationCollectionCtrl', function ($scope) {
+
+    // -------------------------------
+    // add the point to the collection
+    // -------------------------------
+    $scope.addPointToCollection = function(sourceInput, pointInput){
+
+      // sources doesn't exit (also, no points)
+      if( typeof $scope.collection.sources === "undefined") {
+        $scope.collection.sources = [
+          {
+            sourceName: sourceInput,
+            points: [ pointInput]
+          }
+        ];
+      // sources exists
+      }else{
+        var flag = 0;
+        for(var i=0; i < $scope.collection.sources.length; i++){
+          // sourceInput's name exists in collecton
+          if ( sourceInput === $scope.collection.sources[i].sourceName){
+            flag =1
+            if ( typeof $scope.collection.sources[i].points === "undefined"){
+              $scope.collection.sources[i].points = [ pointInput ];
+            }else{
+              $scope.collection.sources[i].points.push(pointInput);
+            }
+          }
+        }
+        if (flag === 0 ){
+          $scope.collection.sources.push({
+            sourceName: sourceInput,
+            points: [ pointInput]
+          })
+        }
+      }
+    };
+
+    // Delete the points
+    $scope.deletePoint = function(sourceName, point){
+      // implement the deletion here
+      console.log(sourceName + ": " + point);
+    }
+
+    // Save
+    $scope.saveCollection = function(){
+      // POST collection if new
+    }
+
+    $scope.collection = {
+      name: "abc",
+        /*
+      sources: [
+        {
+          sourceName: "source_title",
+          points: [
+            "point1",
+            "point2"
+          ]
+        },
+        {
+          sourceName: "source_title2",
+            points : [
+              "point1",
+              "point2"
+            ]
+        }
+      ]
+      */
+    };
+
+  })
   .controller('TopicCtrl', function ($scope, $routeParams, $http) {
 
     // Get parameter on URL

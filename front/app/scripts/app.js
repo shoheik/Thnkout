@@ -24,6 +24,10 @@ angular.module('thnkoutApp', [
         templateUrl: 'views/topic.html',
         controller: 'TopicCtrl'
       })
+      .when('/information-collection/:topicID', {
+        templateUrl: 'views/information-collection.html',
+        controller: 'InformationCollectionCtrl'
+      })
       //.otherwise({
       //  redirectTo: '/'
       //});

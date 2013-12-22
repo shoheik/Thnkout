@@ -13,6 +13,7 @@ sub get_topic {
     debugf "Got $topic_id";
     my $topic = Thnkout::Service::Topic->find_topic_by_id($context->db, $topic_id);
     $topic->{_id} = $topic->{_id}->to_string;
+    $topic->{strategies} = { approaches => "" };
     $context->json($topic);
 }
 
