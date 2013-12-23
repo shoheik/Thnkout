@@ -25,7 +25,19 @@ angular.module('thnkoutApp')
   .controller('OutputCtrl', function ($scope) {
   })
   // controler to colletion information for the thinking
-  .controller('InformationCollectionCtrl', function ($scope) {
+  .controller('InformationCollectionCtrl', function ($scope, $resource, $routeParams) {
+
+    $scope.collection = {};
+    console.log($routeParams.themeID);
+    var collectionURL = '/api/v1/topic/' + $routeParams.themeID;
+    // here we get my info collection from server..
+    var Collection = $resource(collectionURL);
+    Collection.get({}, function(res){
+      $scope.name = res.name;
+      if( typeof res.collection != "undefined"){
+        $scope.collection = res.collection;
+      }
+    });
 
     // -------------------------------
     // add the point to the collection
@@ -63,20 +75,40 @@ angular.module('thnkoutApp')
       }
     };
 
+    // -------------------
     // Delete the points
+    // -------------------
     $scope.deletePoint = function(sourceName, point){
       // implement the deletion here
       console.log(sourceName + ": " + point);
+      for(var i=0; i< $scope.collection.sources.length; i++){
+        if ($scope.collection.sources[i].sourceName === sourceName){
+          for (var j=0; j<$scope.collection.sources[i].points.length; j++){
+            if ($scope.collection.sources[i].points[j] === point){
+              $scope.collection.sources[i].points.splice(j,1);
+            }
+          }
+          if($scope.collection.sources[i].points.length === 0 ){
+            $scope.collection.sources.splice(i,1);
+          }
+        }
+      }
     }
 
-    // Save
+    // -----
+    //  Save
+    // -----
     $scope.saveCollection = function(){
       // POST collection if new
+      var infoCollection = $resource(collectionURL);
+      infoCollection.save($scope.collection, function(res){
+        console.log(res);
+      });
     }
 
+/*
     $scope.collection = {
       name: "abc",
-        /*
       sources: [
         {
           sourceName: "source_title",
@@ -93,8 +125,8 @@ angular.module('thnkoutApp')
             ]
         }
       ]
-      */
     };
+*/
 
   })
   .controller('TopicCtrl', function ($scope, $routeParams, $http) {

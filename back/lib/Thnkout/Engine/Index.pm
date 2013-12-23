@@ -6,7 +6,6 @@ use Data::Dumper;
 
 sub default {
     my ($self, $context) = @_;
-
     print Dumper $context;
     #$context->render();
     #$context->plain_text('this', 'is', 'test');

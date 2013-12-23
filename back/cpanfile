@@ -1,5 +1,6 @@
 requires 'Plack';
 requires 'Plack::Middleware::Static';
+requires 'Plack::Middleware::OAuth';
 requires 'Router::Simple';
 requires 'Exporter::Lite';
 requires 'Text::Xslate';

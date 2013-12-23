@@ -2,7 +2,7 @@
   <ol class="breadcrumb">
     <li><a href="#">トップ</a></li>
     <li><a href="#">情報収集</a></li>
-    <li class="active">テーマ：{{ data.topic.name }} {{ topicID }}</li>
+    <li class="active">テーマ：{{ name }} {{ topicID }}</li>
   </ol>
   <div class="row">
     <div class="col-md-1 col-lg-1"></div>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <br>
-      <button type="button" class="btn btn-info btn-lg btn-block" click-ng="saveCollection">保存する</button>
+      <button type="button" class="btn btn-info btn-lg btn-block" ng-click="saveCollection()">保存する</button>
 
     <div class="col-md-1 col-lg-1"></div>
   </div>

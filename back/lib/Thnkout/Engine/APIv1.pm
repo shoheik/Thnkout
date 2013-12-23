@@ -28,6 +28,15 @@ sub post_topic {
     $context->json({id => $oid->to_string });
 }
 
+sub post_collection {
+    my ($self, $context) = @_;
+    my $theme_id = $context->route->{theme_id};
+    my $data = decode_json $context->request->content;
+    my $oid = Thnkout::Service::Topic->add_collection($context->db, $theme_id, $data->{topic});
+    debugf $oid->to_string . " is created for the new topic";
+    $context->json({id => $oid->to_string });
+}
+
 sub default {
     my ($self, $context) = @_;
 

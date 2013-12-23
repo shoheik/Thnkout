@@ -24,7 +24,7 @@ angular.module('thnkoutApp', [
         templateUrl: 'views/topic.html',
         controller: 'TopicCtrl'
       })
-      .when('/information-collection/:topicID', {
+      .when('/information-collection/:themeID', {
         templateUrl: 'views/information-collection.html',
         controller: 'InformationCollectionCtrl'
       })

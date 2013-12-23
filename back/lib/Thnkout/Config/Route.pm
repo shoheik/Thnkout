@@ -16,13 +16,17 @@ sub make_router {
         connect '/api/v1/topic/:topic_id' => {
             engine => 'APIv1',
             action => 'get_topic',
-        };
+        } => {method => 'GET' };
+
+        connect '/api/v1/information-collection/:theme_id' => {
+            engine => 'APIv1',
+            action => 'post_collection',
+        } => { method => "POST" };
 
         connect '/api/v1/topic' => {
             engine => 'APIv1',
             action => 'post_topic',
         } => { method => 'POST' };
-
 
         connect '/bookmark' => {
             engine => 'Bookmark',
