@@ -4,6 +4,7 @@ use utf8;
 use Moo;
 use Data::Dumper;
 use Thnkout::Service::Topic;
+use Thnkout::Service::InfoCollection;
 use JSON;
 use Log::Minimal;
 
@@ -32,7 +33,7 @@ sub post_collection {
     my ($self, $context) = @_;
     my $theme_id = $context->route->{theme_id};
     my $data = decode_json $context->request->content;
-    my $oid = Thnkout::Service::Topic->add_collection($context->db, $theme_id, $data->{topic});
+    my $oid = Thnkout::Service::InfoCollection->add_collection($context->db, $theme_id, $data);
     debugf $oid->to_string . " is created for the new topic";
     $context->json({id => $oid->to_string });
 }

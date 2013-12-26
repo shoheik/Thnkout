@@ -29,13 +29,14 @@ angular.module('thnkoutApp')
 
     $scope.collection = {};
     console.log($routeParams.themeID);
-    var collectionURL = '/api/v1/topic/' + $routeParams.themeID;
+    var themeURL = '/api/v1/topic/' + $routeParams.themeID;
+    var collectionURL = '/api/v1/information-collection/' + $routeParams.themeID;
     // here we get my info collection from server..
-    var Collection = $resource(collectionURL);
+    var Collection = $resource(themeURL);
     Collection.get({}, function(res){
       $scope.name = res.name;
-      if( typeof res.collection != "undefined"){
-        $scope.collection = res.collection;
+      if( typeof res.information_collection != "undefined"){
+        $scope.collection = res.information_collection;
       }
     });
 
