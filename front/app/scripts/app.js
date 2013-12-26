@@ -20,9 +20,9 @@ angular.module('thnkoutApp', [
         templateUrl: 'views/view.html',
         controller: 'ViewCtrl'
       })
-      .when('/topic/:topicID', {
-        templateUrl: 'views/topic.html',
-        controller: 'TopicCtrl'
+      .when('/theme/:themeID', {
+        templateUrl: 'views/theme.html',
+        controller: 'ThemeCtrl'
       })
       .when('/information-collection/:themeID', {
         templateUrl: 'views/information-collection.html',

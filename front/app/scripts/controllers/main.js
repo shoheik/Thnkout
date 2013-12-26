@@ -1,24 +1,24 @@
 'use strict';
 
 angular.module('thnkoutApp')
-  .controller('MainCtrl', function ($scope, TopicGenerator, $location, $http) {
+  .controller('MainCtrl', function ($scope, ThemeGenerator, $location, $http) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    $scope.topics = TopicGenerator.getTopics();
+    $scope.themes = ThemeGenerator.getThemes();
 
-    $scope.createTopic = function(topic){
-      console.log(topic);
-      $http.post('/api/v1/topic', { topic: topic }).
-      //$http({method: 'POST', url: '/api/v1/topic', data: JSON.stringify({topic_name: topic})})
+    $scope.createTheme = function(theme){
+      console.log(theme);
+      $http.post('/api/v1/theme', { theme: theme }).
+      //$http({method: 'POST', url: '/api/v1/theme', data: JSON.stringify({theme_name: theme})})
       success(function(data,status,headers,config){
         console.log(data);
-        $location.path("/topic/" + data.id);
+        $location.path("/theme/" + data.id);
       });
-      //$location.path( "/topic" );
+      //$location.path( "/theme" );
     };
 
   })
@@ -29,7 +29,7 @@ angular.module('thnkoutApp')
 
     $scope.collection = {};
     console.log($routeParams.themeID);
-    var themeURL = '/api/v1/topic/' + $routeParams.themeID;
+    var themeURL = '/api/v1/theme/' + $routeParams.themeID;
     var collectionURL = '/api/v1/information-collection/' + $routeParams.themeID;
     // here we get my info collection from server..
     var Collection = $resource(themeURL);
@@ -130,17 +130,17 @@ angular.module('thnkoutApp')
 */
 
   })
-  .controller('TopicCtrl', function ($scope, $routeParams, $http) {
+  .controller('ThemeCtrl', function ($scope, $routeParams, $http) {
 
     // Get parameter on URL
-    $scope.topicID = $routeParams.topicID
-    var topicURL =  '/api/v1/topic/' + $routeParams.topicID;
+    $scope.themeID = $routeParams.themeID
+    var themeURL =  '/api/v1/theme/' + $routeParams.themeID;
 
-    // GET /api/v1/topic/:topicID
-    $http({method: 'GET', url: topicURL }).
+    // GET /api/v1/theme/:themeID
+    $http({method: 'GET', url: themeURL }).
     success(function(data, status, headers, config) {
       console.log(data);
-      $scope.data.topic = data;
+      $scope.data.theme = data;
       // this callback will be called asynchronously
       // when the response is available
     }).
@@ -151,7 +151,7 @@ angular.module('thnkoutApp')
 
 
     $scope.data = {
-      topic :{
+      theme :{
         name: "Become financial engineer",
         tag: [
           "finance",
@@ -237,19 +237,19 @@ angular.module('thnkoutApp')
       idea.last_update = d.toString();
       idea.thoughts = output;
 
-      if (typeof $scope.data.topic.strategies[strategy] === "undefined"){
+      if (typeof $scope.data.theme.strategies[strategy] === "undefined"){
         var apprch = {};
         apprch[approach] = [];
-        $scope.data.topic.strategies[strategy] = { approaches : apprch };
-      }else if (typeof $scope.data.topic.strategies[strategy].approaches[approach] === "undefined"){
-        $scope.data.topic.strategies[strategy].approaches[approach] = [];
+        $scope.data.theme.strategies[strategy] = { approaches : apprch };
+      }else if (typeof $scope.data.theme.strategies[strategy].approaches[approach] === "undefined"){
+        $scope.data.theme.strategies[strategy].approaches[approach] = [];
       }
-      //console.log($scope.data.topic);
-      console.log($scope.data.topic.strategies[strategy].approaches[approach]);
-      $scope.data.topic.strategies[strategy].approaches[approach].unshift(idea);
+      //console.log($scope.data.theme);
+      console.log($scope.data.theme.strategies[strategy].approaches[approach]);
+      $scope.data.theme.strategies[strategy].approaches[approach].unshift(idea);
     }
 
   })
-  .controller('ViewCtrl', function ($scope, TopicGenerator) {
-    $scope.topics = TopicGenerator.getTopics();
+  .controller('ViewCtrl', function ($scope, ThemeGenerator) {
+    $scope.themes = ThemeGenerator.getThemes();
   });

@@ -13,9 +13,9 @@ sub make_router {
             action => 'default',
         };
 
-        connect '/api/v1/topic/:topic_id' => {
+        connect '/api/v1/theme/:theme_id' => {
             engine => 'APIv1',
-            action => 'get_topic',
+            action => 'get_theme',
         } => {method => 'GET' };
 
         connect '/api/v1/information-collection/:theme_id' => {
@@ -23,9 +23,9 @@ sub make_router {
             action => 'post_collection',
         } => { method => "POST" };
 
-        connect '/api/v1/topic' => {
+        connect '/api/v1/theme' => {
             engine => 'APIv1',
-            action => 'post_topic',
+            action => 'post_theme',
         } => { method => 'POST' };
 
         connect '/bookmark' => {

@@ -3,29 +3,29 @@ package Thnkout::Engine::APIv1;
 use utf8;
 use Moo;
 use Data::Dumper;
-use Thnkout::Service::Topic;
+use Thnkout::Service::Theme;
 use Thnkout::Service::InfoCollection;
 use JSON;
 use Log::Minimal;
 
-sub get_topic {
+sub get_theme {
     my ($self, $context) = @_;
-    my $topic_id = $context->route->{topic_id};
-    debugf "Got $topic_id";
-    my $topic = Thnkout::Service::Topic->find_topic_by_id($context->db, $topic_id);
-    $topic->{_id} = $topic->{_id}->to_string;
-    $topic->{strategies} = { approaches => "" };
-    $context->json($topic);
+    my $theme_id = $context->route->{theme_id};
+    debugf "Got $theme_id";
+    my $theme = Thnkout::Service::Theme->find_theme_by_id($context->db, $theme_id);
+    $theme->{_id} = $theme->{_id}->to_string;
+    $theme->{strategies} = { approaches => "" };
+    $context->json($theme);
 }
 
-sub post_topic {
+sub post_theme {
     my ($self, $context) = @_;
     # POST is in body
     my $data = decode_json $context->request->content;
-    debugf $data->{topic} . "is POST'ed";
-    my $oid = Thnkout::Service::Topic->create_topic($context->db, $data->{topic});
+    debugf $data->{theme} . "is POST'ed";
+    my $oid = Thnkout::Service::Theme->create_theme($context->db, $data->{theme});
     #my $id = $oid->to_string;
-    debugf $oid->to_string . " is created for the new topic";
+    debugf $oid->to_string . " is created for the new theme";
     $context->json({id => $oid->to_string });
 }
 
@@ -34,7 +34,7 @@ sub post_collection {
     my $theme_id = $context->route->{theme_id};
     my $data = decode_json $context->request->content;
     my $oid = Thnkout::Service::InfoCollection->add_collection($context->db, $theme_id, $data);
-    debugf $oid->to_string . " is created for the new topic";
+    debugf $oid->to_string . " is created for the new theme";
     $context->json({id => $oid->to_string });
 }
 

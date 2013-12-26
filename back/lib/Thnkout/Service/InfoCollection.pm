@@ -7,9 +7,9 @@ use DateTime;
 use Data::Dumper;
 use Log::Minimal;
 
-sub find_topic_by_id {
-    my ($self, $db, $topic_id ) = @_;
-    my $cursor = $db->mongodbh('topic')->find({_id => MongoDB::OID->new(value => $topic_id)});
+sub find_theme_by_id {
+    my ($self, $db, $theme_id ) = @_;
+    my $cursor = $db->mongodbh('theme')->find({_id => MongoDB::OID->new(value => $theme_id)});
     my @obj = $cursor->all;
     return $obj[0];
 }
@@ -19,11 +19,11 @@ sub add_collection {
     print Dumper $theme_id;
     print Dumper $data;
 
-    my $cursor = $db->mongodbh('topic')->find({_id => MongoDB::OID->new(value => $theme_id)}); 
+    my $cursor = $db->mongodbh('theme')->find({_id => MongoDB::OID->new(value => $theme_id)}); 
     my @theme = $cursor->all;
     print Dumper $theme[0];
     if (defined $theme[0]){
-        my $row =$db->mongodbh('topic')->update(
+        my $row =$db->mongodbh('theme')->update(
             {_id => MongoDB::OID->new(value => $theme_id)}, 
             #{$theme[0] => { 'information_collection' => $data }}
             {'$set' => { 'information_collection' => $data }}
@@ -32,7 +32,7 @@ sub add_collection {
     }else{
         debugf $theme_id . " is not in the database";
     }
-    #return $db->mongodbh('topic')->insert({"name" => $topic});
+    #return $db->mongodbh('theme')->insert({"name" => $theme});
 }    
 
 

@@ -1,6 +1,6 @@
 <div class="container">
-  {{ topicID }}
-  <h2> Topic: {{ data.topic.name }} </h2>
+  {{ themeID }}
+  <h2> Theme: {{ data.theme.name }} </h2>
   <div class="row">
   <div class="col-md-2">
     <select ng-model="strategy_name" ng-change="selectStrategy()" class="form-control">
@@ -23,7 +23,7 @@
 <hr>
 <div class="row">
   <div class="col-md-12">
-    <div class="panel panel-default" ng-repeat="strategy in data.topic.strategies | strategyFilter:strategy_name" >
+    <div class="panel panel-default" ng-repeat="strategy in data.theme.strategies | strategyFilter:strategy_name" >
       <div class="panel-heading"> {{ strategy_name }} : {{ strategy.description }} </div>
       <div class="panel-body">
         <div class="panel panel-default" ng-repeat="(approach, ideas) in strategy.approaches">

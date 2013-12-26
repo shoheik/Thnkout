@@ -1,4 +1,4 @@
-package Thnkout::Service::Topic;
+package Thnkout::Service::Theme;
 
 use utf8;
 use Moo;
@@ -6,16 +6,16 @@ use Carp;
 use DateTime;
 use Data::Dumper;
 
-sub find_topic_by_id {
-    my ($self, $db, $topic_id ) = @_;
-    my $cursor = $db->mongodbh('topic')->find({_id => MongoDB::OID->new(value => $topic_id)});
+sub find_theme_by_id {
+    my ($self, $db, $theme_id ) = @_;
+    my $cursor = $db->mongodbh('theme')->find({_id => MongoDB::OID->new(value => $theme_id)});
     my @obj = $cursor->all;
     return $obj[0];
 }
 
-sub create_topic {
-    my ($self, $db, $topic) = @_;
-    return $db->mongodbh('topic')->insert({"name" => $topic});
+sub create_theme {
+    my ($self, $db, $theme) = @_;
+    return $db->mongodbh('theme')->insert({"name" => $theme});
 }    
 
 
