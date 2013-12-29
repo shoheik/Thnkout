@@ -70,3 +70,64 @@ example:
                   last_update: "201312071100"
                 },
     
+
+
+## Information Collection 
+
+### data structure
+
+- data source1 
+ * point1 (with your own words, not copy as it is) 
+ * point2
+ * point3 
+- data source 2 [hide] 
+ * point 1
+
+```javascript
+   $scope.collection = {
+      name: "abc",
+      sources: [
+        {
+          sourceName: "source_title",
+          points: [
+            "point1",
+            "point2"
+          ]
+        },
+        {
+          sourceName: "source_title2",
+            points : [
+              "point1",
+              "point2"
+            ]
+        }
+      ]
+    };
+```
+
+My thoughts:  Put what you think from the above information. 
+
+- GET /api/v1/information-collection/[themeID]
+- PUT info-collection/[topic#]  - update
+- DELETE
+- POST - /api/v1/information-collection
+
+## Database 
+
+### MYSQL
+
+user table -- pass, hash etc
+
+user theme mapping 
+user_id
+theme_id 
+
+### Mongo DB
+
+theme_id : oid(mongodb)
+theme: "考えるとは"
+informationCollection: {}
+
+
+
+

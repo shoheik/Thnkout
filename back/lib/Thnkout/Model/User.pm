@@ -4,6 +4,7 @@ use Moo;
 use utf8;
 use JSON::Types qw();
 use Thnkout::Util;
+#use Thnkout::DBI:Factory;
 
 has user_id => (
     is => 'ro',

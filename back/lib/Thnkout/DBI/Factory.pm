@@ -6,6 +6,9 @@ use Carp ();
 use Scope::Container::DBI;
 use Thnkout::Config;
 
+use Teng;
+use Teng::Schema::Loader;
+
 use MongoDB;
 use MongoDB::OID;
 
@@ -15,9 +18,23 @@ has mongodb => (
     builder => '_build_mongodb'
 );
 
+has teng => (
+    is => 'ro',
+    lazy => 1,
+    builder => '_build_teng'
+);
+
 sub _build_mongodb{
     my $client = MongoDB::MongoClient->new;
     return $client->get_database('thnkout'); 
+}
+
+sub _build_teng{
+    my $self = shift;
+    return Teng::Schema::Loader->load(
+        'dbh'       => $self->dbh('thnkout'),
+        #'namespace' => 'MyApp::DB',
+    );
 }
 
 sub dbconfig {
@@ -39,6 +56,8 @@ sub dbh {
     });
     return $dbh;
 }
+
+
 
 sub query_builder {
     my ($self) = @_;

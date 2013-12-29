@@ -12,10 +12,15 @@ sub get_theme {
     my ($self, $context) = @_;
     my $theme_id = $context->route->{theme_id};
     debugf "Got $theme_id";
-    my $theme = Thnkout::Service::Theme->find_theme_by_id($context->db, $theme_id);
+    my $theme = Thnkout::Service::Theme->find_theme_by_id($theme_id);
     $theme->{_id} = $theme->{_id}->to_string;
     $theme->{strategies} = { approaches => "" };
     $context->json($theme);
+}
+
+sub get_login_info {
+    my ($self, $context) = @_;
+    #print Dumper $Thnkout::model->mongodb;
 }
 
 sub post_theme {

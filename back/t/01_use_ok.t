@@ -17,6 +17,7 @@ BEGIN {
     use_ok( 'Thnkout::Service::User' ); 
     use_ok( 'Thnkout::Service::Theme' ); 
     use_ok( 'Thnkout::Service::InfoCollection' ); 
+    use_ok( 'Thnkout::Model' ); 
 }
 done_testing();
 

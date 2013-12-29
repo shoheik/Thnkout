@@ -1,7 +1,6 @@
 package Thnkout::Util;
 
-use strict;
-use warnings;
+use Moo;
 use utf8;
 
 use Carp ();

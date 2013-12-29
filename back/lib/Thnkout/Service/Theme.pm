@@ -7,10 +7,8 @@ use DateTime;
 use Data::Dumper;
 
 sub find_theme_by_id {
-    my ($self, $db, $theme_id ) = @_;
-    my $cursor = $db->mongodbh('theme')->find({_id => MongoDB::OID->new(value => $theme_id)});
-    my @obj = $cursor->all;
-    return $obj[0];
+    my ($self, $theme_id ) = @_;
+    return $Thnkout::model->get_theme_by_id($theme_id);
 }
 
 sub create_theme {

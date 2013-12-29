@@ -8,14 +8,20 @@ use Router::Simple::Declare;
 
 sub make_router {
     return router {
-        connect '/' => {
-            engine => 'Index',
-            action => 'default',
-        };
+
+        #connect '/' => {
+        #    engine => 'Index',
+        #    action => 'default',
+        #};
 
         connect '/api/v1/theme/:theme_id' => {
             engine => 'APIv1',
             action => 'get_theme',
+        } => {method => 'GET' };
+
+        connect '/api/v1/login-info' => {
+            engine => 'APIv1',
+            action => 'get_login_info',
         } => {method => 'GET' };
 
         connect '/api/v1/information-collection/:theme_id' => {

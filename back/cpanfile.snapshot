@@ -42,6 +42,14 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       base 1.01
+  Class-Accessor-Chained-0.01
+    pathname: R/RC/RCLAMP/Class-Accessor-Chained-0.01.tar.gz
+    provides:
+      Class::Accessor::Chained 0.01
+      Class::Accessor::Chained::Fast undef
+    requirements:
+      Class::Accessor 0
+      Test::More 0
   Class-Accessor-Lite-0.05
     pathname: K/KA/KAZUHO/Class-Accessor-Lite-0.05.tar.gz
     provides:
@@ -169,6 +177,22 @@ DISTRIBUTIONS
       Module::Build 0.38
       URI::Escape 0
       perl 5.008005
+  Crypt-SSLeay-0.64
+    pathname: N/NA/NANIS/Crypt-SSLeay-0.64.tar.gz
+    provides:
+      Crypt::SSLeay 0.64
+      Crypt::SSLeay::CTX undef
+      Crypt::SSLeay::Conn undef
+      Crypt::SSLeay::Err undef
+      Crypt::SSLeay::MainContext undef
+      Crypt::SSLeay::X509 undef
+      Net::SSL 2.85
+    requirements:
+      ExtUtils::MakeMaker 0
+      LWP::Protocol::https 6.02
+      MIME::Base64 0
+      Test::More 0.88
+      Try::Tiny 0.09
   DBD-SQLite-1.40
     pathname: I/IS/ISHIGAKI/DBD-SQLite-1.40.tar.gz
     provides:
@@ -184,6 +208,21 @@ DISTRIBUTIONS
       Test::More 0.47
       Tie::Hash 0
       perl 5.006
+  DBD-mysql-4.025
+    pathname: C/CA/CAPTTOFU/DBD-mysql-4.025.tar.gz
+    provides:
+      Bundle::DBD::mysql 4.025
+      DBD::mysql 4.025
+      DBD::mysql::GetInfo undef
+      DBD::mysql::db 4.025
+      DBD::mysql::dr 4.025
+      DBD::mysql::st 4.025
+    requirements:
+      DBI 1.08
+      Data::Dumper 0
+      Test::Deep 0
+      Test::More 0
+      perl 5.008001
   DBI-1.630
     pathname: T/TI/TIMB/DBI-1.630.tar.gz
     provides:
@@ -280,6 +319,31 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.48
       Test::Simple 0.90
       perl 5.008
+  DBIx-Inspector-0.12
+    pathname: T/TO/TOKUHIROM/DBIx-Inspector-0.12.tar.gz
+    provides:
+      DBIx::Inspector 0.12
+      DBIx::Inspector::Column undef
+      DBIx::Inspector::Column::Pg undef
+      DBIx::Inspector::Driver::Base undef
+      DBIx::Inspector::Driver::Pg undef
+      DBIx::Inspector::Driver::SQLite undef
+      DBIx::Inspector::Driver::mysql undef
+      DBIx::Inspector::ForeignKey undef
+      DBIx::Inspector::ForeignKey::Pg undef
+      DBIx::Inspector::Iterator undef
+      DBIx::Inspector::Iterator::Null undef
+      DBIx::Inspector::Table undef
+      DBIx::Inspector::Table::Pg undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Class::Accessor::Lite 0.05
+      DBI 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.38
+      Module::Load 0
+      perl 5.008001
   DBIx-Sunny-0.21
     pathname: K/KA/KAZEBURO/DBIx-Sunny-0.21.tar.gz
     provides:
@@ -344,6 +408,23 @@ DISTRIBUTIONS
       Sub::Install 0.921
       strict 0
       warnings 0
+  Data-Page-2.02
+    pathname: L/LB/LBROCARD/Data-Page-2.02.tar.gz
+    provides:
+      Data::Page 2.02
+    requirements:
+      Class::Accessor::Chained::Fast 0
+      Test::Exception 0
+      Test::More 0
+  Data-Page-NoTotalEntries-0.02
+    pathname: T/TO/TOKUHIROM/Data-Page-NoTotalEntries-0.02.tar.gz
+    provides:
+      Data::Page::NoTotalEntries 0.02
+    requirements:
+      Class::Accessor::Lite 0.05
+      ExtUtils::MakeMaker 6.42
+      Test::More 0.96
+      perl 5.008001
   Data-Types-0.09
     pathname: D/DW/DWHEELER/Data-Types-0.09.tar.gz
     provides:
@@ -2311,6 +2392,36 @@ DISTRIBUTIONS
       MIME::Base64 0
       Test::More 0.60_01
       perl 5.005
+  Net-Twitter-Lite-0.12004
+    pathname: M/MM/MMIMS/Net-Twitter-Lite-0.12004.tar.gz
+    provides:
+      Net::Twitter::Lite 0.12004
+      Net::Twitter::Lite::API::V1 0.12004
+      Net::Twitter::Lite::API::V1_1 0.12004
+      Net::Twitter::Lite::Error 0.12004
+      Net::Twitter::Lite::WithAPIv1_1 0.12004
+    requirements:
+      Carp 0
+      Crypt::SSLeay 0.5
+      Encode 0
+      File::Find 0
+      File::Temp 0
+      HTTP::Request::Common 0
+      JSON 2.02
+      LWP::UserAgent 2.032
+      Module::Build 0.3601
+      Net::HTTP >= 0, != 6.04, != 6.05
+      Net::Netrc 0
+      Test::Fatal 0
+      Test::More 0
+      Test::Simple 0.98
+      URI 1.40
+      URI::Escape 0
+      overload 0
+      parent 0
+      perl 5.005
+      strict 0
+      warnings 0
   Package-DeprecationManager-0.13
     pathname: D/DR/DROLSKY/Package-DeprecationManager-0.13.tar.gz
     provides:
@@ -2524,6 +2635,23 @@ DISTRIBUTIONS
       Try::Tiny 0
       URI 1.59
       parent 0
+  Plack-Middleware-DirIndex-0.01
+    pathname: L/LL/LLAP/Plack-Middleware-DirIndex-0.01.tar.gz
+    provides:
+      Plack::Middleware::DirIndex 0.01
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      File::Spec 0
+      Plack::App::File 0
+      Plack::Builder 0
+      Plack::Middleware 0
+      Plack::Middleware::ErrorDocument 0
+      Plack::Test 0
+      Plack::Util::Accessor 0
+      Test::More 0
+      parent 0
+      strict 0
+      warnings 0
   Plack-Middleware-OAuth-0.10
     pathname: C/CO/CORNELIUS/Plack-Middleware-OAuth-0.10.tar.gz
     provides:
@@ -2733,6 +2861,105 @@ DISTRIBUTIONS
       Scalar::Util 1.14
       Test::More 0.42
       perl 5.005
+  Teng-0.20
+    pathname: S/SA/SATOH/Teng-0.20.tar.gz
+    provides:
+      Teng 0.20
+      Teng::Iterator undef
+      Teng::Plugin::BulkInsert undef
+      Teng::Plugin::Count undef
+      Teng::Plugin::FindOrCreate undef
+      Teng::Plugin::Lookup undef
+      Teng::Plugin::Pager undef
+      Teng::Plugin::Pager::MySQLFoundRows undef
+      Teng::Plugin::Replace undef
+      Teng::Plugin::SQLPager undef
+      Teng::Plugin::SingleBySQL undef
+      Teng::QueryBuilder undef
+      Teng::Row undef
+      Teng::Schema undef
+      Teng::Schema::Declare undef
+      Teng::Schema::Dumper undef
+      Teng::Schema::Loader undef
+      Teng::Schema::Table undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Carp 0
+      Class::Accessor::Lite 0.05
+      Class::Load 0.06
+      DBI 1.33
+      DBIx::Inspector 0.06
+      DBIx::TransactionManager 1.06
+      Data::Page 0
+      Data::Page::NoTotalEntries 0.02
+      ExtUtils::MakeMaker 6.36
+      Module::Build 0.38
+      SQL::Maker 0.14
+      Test::Mock::Guard 0
+      Test::More 0.96
+      Test::Requires 0
+      Test::SharedFork 0.15
+      parent 0
+  Test-Deep-0.112
+    pathname: R/RJ/RJBS/Test-Deep-0.112.tar.gz
+    provides:
+      Test::Deep 0.112
+      Test::Deep::All undef
+      Test::Deep::Any undef
+      Test::Deep::Array undef
+      Test::Deep::ArrayEach undef
+      Test::Deep::ArrayElementsOnly undef
+      Test::Deep::ArrayLength undef
+      Test::Deep::ArrayLengthOnly undef
+      Test::Deep::Blessed undef
+      Test::Deep::Boolean undef
+      Test::Deep::Cache undef
+      Test::Deep::Cache::Simple undef
+      Test::Deep::Class undef
+      Test::Deep::Cmp undef
+      Test::Deep::Code undef
+      Test::Deep::Hash undef
+      Test::Deep::HashEach undef
+      Test::Deep::HashElements undef
+      Test::Deep::HashKeys undef
+      Test::Deep::HashKeysOnly undef
+      Test::Deep::Ignore undef
+      Test::Deep::Isa undef
+      Test::Deep::ListMethods undef
+      Test::Deep::MM undef
+      Test::Deep::Methods undef
+      Test::Deep::NoTest undef
+      Test::Deep::Number undef
+      Test::Deep::Obj undef
+      Test::Deep::Ref undef
+      Test::Deep::RefType undef
+      Test::Deep::Regexp undef
+      Test::Deep::RegexpMatches undef
+      Test::Deep::RegexpRef undef
+      Test::Deep::RegexpRefOnly undef
+      Test::Deep::RegexpVersion undef
+      Test::Deep::ScalarRef undef
+      Test::Deep::ScalarRefOnly undef
+      Test::Deep::Set undef
+      Test::Deep::Shallow undef
+      Test::Deep::Stack undef
+      Test::Deep::String undef
+      Test::Deep::SubHash undef
+      Test::Deep::SubHashElements undef
+      Test::Deep::SubHashKeys undef
+      Test::Deep::SubHashKeysOnly undef
+      Test::Deep::SuperHash undef
+      Test::Deep::SuperHashElements undef
+      Test::Deep::SuperHashKeys undef
+      Test::Deep::SuperHashKeysOnly undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      List::Util 1.09
+      Scalar::Util 1.09
+      Test::More 0
+      Test::NoWarnings 0.02
+      Test::Tester 0.04
   Test-Differences-0.61
     pathname: O/OV/OVID/Test-Differences-0.61.tar.gz
     provides:
@@ -2817,6 +3044,16 @@ DISTRIBUTIONS
       Test::Harness 3.30
     requirements:
       ExtUtils::MakeMaker 0
+  Test-Mock-Guard-0.09
+    pathname: X/XA/XAICRON/Test-Mock-Guard-0.09.tar.gz
+    provides:
+      Test::Mock::Guard 0.09
+    requirements:
+      Class::Load 0.06
+      Exporter 5.63
+      ExtUtils::MakeMaker 6.59
+      Test::More 0.96
+      perl 5.006001
   Test-Name-FromLine-0.11
     pathname: S/SA/SATOH/Test-Name-FromLine-0.11.tar.gz
     provides:
@@ -2832,6 +3069,17 @@ DISTRIBUTIONS
       Test::Differences 0
       Test::Fatal 0
       Test::More 0
+  Test-NoWarnings-1.04
+    pathname: A/AD/ADAMK/Test-NoWarnings-1.04.tar.gz
+    provides:
+      Test::NoWarnings 1.04
+      Test::NoWarnings::Warning 1.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::Builder 0.86
+      Test::More 0.47
+      Test::Tester 0.107
+      perl 5.006
   Test-Requires-0.07
     pathname: T/TO/TOKUHIROM/Test-Requires-0.07.tar.gz
     provides:
@@ -2873,6 +3121,16 @@ DISTRIBUTIONS
       Test::SharedFork 0.19
       Time::HiRes 0
       perl 5.008001
+  Test-Tester-0.109
+    pathname: F/FD/FDALY/Test-Tester-0.109.tar.gz
+    provides:
+      Test::Tester 0.109
+      Test::Tester::Capture undef
+      Test::Tester::CaptureRunner undef
+      Test::Tester::Delegate undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::Builder 0
   Test-Warn-0.24
     pathname: C/CH/CHORNY/Test-Warn-0.24.tar.gz
     provides:

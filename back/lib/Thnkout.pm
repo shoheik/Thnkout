@@ -16,6 +16,11 @@ use Thnkout::Config;
 use Thnkout::Request;
 use Thnkout::Response;
 use Thnkout::Error;
+use Thnkout::Model;
+
+# Global variable and it's instantiate once when it's started. 
+# Use $Thnkout::model to access to this. 
+our $model = new Thnkout::Model;
 
 sub as_psgi {
     my $self = shift;
