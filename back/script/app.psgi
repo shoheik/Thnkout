@@ -3,7 +3,7 @@ use warnings;
 use utf8;
 
 use Data::Dumper;
-local $Data::Dumper::Indent = 0;
+$Data::Dumper::Indent = 0;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 use Plack::Builder;
@@ -16,8 +16,6 @@ use Thnkout::Model;
 
 my $app = Thnkout->as_psgi;
 my $root = config->root;
-
-#print Dumper config->param('twitter');
 
 builder {
     enable "Plack::Middleware::Session", store => 'File';

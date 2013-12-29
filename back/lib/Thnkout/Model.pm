@@ -14,6 +14,7 @@ use MongoDB;
 use MongoDB::OID;
 
 use Thnkout::Config;
+use Thnkout::Util;
 
 has mongodb => (
     is => 'ro',
@@ -39,14 +40,14 @@ sub dbconfig {
 }
 
 sub _mysql_builder {
-    my ($self, $name) = @_;
-    my $db_config = $self->dbconfig($name);
-    my $user      = $db_config->{user} or Carp::croak qq(user for '$name' does not exist);
-    my $password  = $db_config->{password} or Carp::croak qq(password for '$name' does not exist);
-    my $dsn       = $db_config->{dsn} or Carp::croak qq(dsn for '$name' does not exist);
+    my $self = shift;
+    my $db_config = $self->dbconfig('thnkout');
+    my $user      = $db_config->{user} or Carp::croak qq(user for thnkout does not exist);
+    my $password  = $db_config->{password} or Carp::croak qq(password for thnkout does not exist);
+    my $dsn       = $db_config->{dsn} or Carp::croak qq(dsn for thnkout does not exist);
     return Teng::Schema::Loader->load(
         connect_info => [ $dsn, $user, $password, {mysql_enable_utf8=>1} ],
-        # namespace => 'xxx'
+        namespace => 'Thnkout::DB'
     );
 }
 
@@ -54,14 +55,40 @@ sub BUILD {
     debugf "Loading Model...";
 }
 
-
 sub get_theme_by_id {
     my ($self, $theme_id ) = @_;
-    print Dumper $theme_id;
+    debugf "Getting theme by id:$theme_id";
     my $cursor = $self->mongodb->get_collection('theme')->find({_id => MongoDB::OID->new(value => $theme_id)});
-    print Dumper $cursor;
     my @obj = $cursor->all;
     return $obj[0];
+}
+
+sub create_theme {
+    my ($self, $theme_doc) = @_;
+    debugf "Insert theme:" . Dumper($theme_doc);
+    $self->mongodb->get_collection('theme')->insert($theme_doc);
+}
+
+sub get_twitter_user {
+    my ($self, $twitter_id) = @_;
+    my $row = $self->mysql->single('user', +{twitter_id => $twitter_id});
+    return undef if (not defined $row);
+    return $row->get_columns; 
+}
+
+sub add_twitter_user {
+    my ($self, $data) = @_;
+    my $created_at = Thnkout::Util::get_current_datetime(); 
+    return $self->mysql->fast_insert(
+        'user', 
+        +{
+            twitter_id => $data->{twitter_id},
+            image_url => $data->{image_url},
+            screen_name => $data->{screen_name},
+            lang => $data->{lang},
+            created_at => $created_at, 
+        }
+    );
 }
 
 1;

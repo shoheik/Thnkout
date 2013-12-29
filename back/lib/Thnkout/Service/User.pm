@@ -22,20 +22,28 @@ sub handle_user_info {
             access_token        => $token->{params}->{access_token},
             access_token_secret => $token->{params}->{access_token_secret},
         );
+        my $result;
         eval{
-            my $result = $nt->show_user({user_id => $token->{params}->{extra}->{user_id}});
+            $result = $nt->show_user({user_id => $token->{params}->{extra}->{user_id}});
             debugf(Dumper $result);
-            #$db->dbh('thnkout')->
-            #$result->{profile_image_url};
-            #$token->{params}->{extra}->{user_id} #id
-            #$result->{screen_name}
-            #$result->{name}
-            #$result->{lang} # ja
-            #$result->{location}
-            #$result->{timezone}
         };
         if ( my $err = $@ ) {
              debugf $err;
+        }
+
+        if (defined $result){
+            my $user = $Thnkout::model->get_twitter_user($token->{params}->{extra}->{user_id});
+            if (defined $user){
+                # update if the attribute is different
+            }else{
+                debugf "Insert user as new record";
+                $Thnkout::model->add_twitter_user({
+                    twitter_id => $token->{params}->{extra}->{user_id},
+                    image_url => $result->{profile_image_url},
+                    lang => $result->{lang},
+                    screen_name => $result->{screen_name},
+                });
+            }
         }
     }
 }

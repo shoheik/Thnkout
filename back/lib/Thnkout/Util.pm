@@ -16,4 +16,10 @@ sub datetime_from_db ($) {
     $dt;
 }
 
+sub get_current_datetime {
+    my $self = shift;
+    my $dt = DateTime->now( time_zone=>'local' );
+    return DateTime::Format::MySQL->format_datetime($dt);
+}
+
 1;

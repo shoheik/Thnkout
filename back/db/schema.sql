@@ -4,13 +4,14 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE user 
 (
     id BIGINT AUTO_INCREMENT, 
-    email VARCHAR(50),
-    username VARCHAR(20),
-    gender VARCHAR(6),
-    age INT,
-    password CHAR(65),
-    start_date DATE,
-    PRIMARY KEY (id,email,username)
+    twitter_id INT,
+    facebook_id INT,
+    image_url VARCHAR(100),
+    screen_name VARCHAR(20),
+    lang VARCHAR(10),
+    created_at DATETIME,
+    INDEX (twitter_id),
+    PRIMARY KEY (id)
 ) ENGINE=INNODB;;
 
 SET FOREIGN_KEY_CHECKS=1;
