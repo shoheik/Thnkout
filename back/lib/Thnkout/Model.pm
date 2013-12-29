@@ -63,6 +63,17 @@ sub get_theme_by_id {
     return $obj[0];
 }
 
+sub update_theme {
+    my ($self, $theme_id, $data) = @_;
+
+    my $result = $self->mongodb->get_collection('theme')->update(
+        {_id => MongoDB::OID->new(value => $theme_id)}, 
+        {'$set' => { 'information_collection' => $data }},
+    );
+    debugf("return value:" . $result->{ok} );
+    return $result->{ok};
+}
+
 sub create_theme {
     my ($self, $theme_doc) = @_;
     debugf "Insert theme:" . Dumper($theme_doc);
@@ -75,6 +86,7 @@ sub get_twitter_user {
     return undef if (not defined $row);
     return $row->get_columns; 
 }
+
 
 sub add_twitter_user {
     my ($self, $data) = @_;
