@@ -91,7 +91,7 @@ sub get_twitter_user {
 sub add_twitter_user {
     my ($self, $data) = @_;
     my $created_at = Thnkout::Util::get_current_datetime(); 
-    return $self->mysql->fast_insert(
+    my $row = $self->mysql->insert(
         'user', 
         +{
             twitter_id => $data->{twitter_id},
@@ -101,6 +101,8 @@ sub add_twitter_user {
             created_at => $created_at, 
         }
     );
+    return undef if (not defined $row);
+    return $row->get_columns;
 }
 
 1;

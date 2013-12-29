@@ -7,12 +7,13 @@ use utf8;
 use Carp;
 use DateTime;
 use Data::Dumper;
+use Plack::Session;
 use Net::Twitter::Lite::WithAPIv1_1;
 use Thnkout::Config;
 use Log::Minimal;
 
 sub handle_user_info {
-    my ($token) = @_;
+    my ($self, $env, $token) = @_;
 
     # Twitter Sigin handling 
     if($token->is_provider('Twitter')){
@@ -31,21 +32,30 @@ sub handle_user_info {
              debugf $err;
         }
 
+
         if (defined $result){
             my $user = $Thnkout::model->get_twitter_user($token->{params}->{extra}->{user_id});
             if (defined $user){
                 # update if the attribute is different
             }else{
                 debugf "Insert user as new record";
-                $Thnkout::model->add_twitter_user({
+                $user = $Thnkout::model->add_twitter_user({
                     twitter_id => $token->{params}->{extra}->{user_id},
                     image_url => $result->{profile_image_url},
                     lang => $result->{lang},
                     screen_name => $result->{screen_name},
                 });
             }
+            #store the login info to session
+            my $session = Plack::Session->new($env);
+            $session->set('logged_in', 1);
+            $session->set('id', $user->{id});
         }
     }
+}
+
+sub get_user_info {
+    my ($self, $user_id) = @_;
 }
 
 sub find_user_by_name {

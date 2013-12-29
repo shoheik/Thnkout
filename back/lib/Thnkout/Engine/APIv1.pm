@@ -2,6 +2,7 @@ package Thnkout::Engine::APIv1;
 
 use utf8;
 use Moo;
+use Plack::Session;
 use Data::Dumper;
 use Thnkout::Service::Theme;
 use Thnkout::Service::InfoCollection;
@@ -20,6 +21,18 @@ sub get_theme {
 
 sub get_login_info {
     my ($self, $context) = @_;
+    debugf(Dumper $context->{env}->{'psgix.session'}); 
+    
+    my $session = Plack::Session->new($context->{env});
+    my $id = $session->get('id');
+    my $status = $session->get('logged_in');
+    debugf "id:$id status:$status";
+    if( $status == 1){
+        # logged in
+        my $user = Thnkout::Service::User->get_user_info();
+    }else{
+        # not logged in
+    }
     #print Dumper $Thnkout::model->mongodb;
 }
 

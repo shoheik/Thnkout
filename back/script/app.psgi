@@ -35,7 +35,8 @@ builder {
             on_success => sub {
                 my ( $self, $token ) = @_;
                 debugf(Dumper $token);
-                Thnkout::Service::User::handle_user_info($token);
+                debugf(Dumper $self);
+                Thnkout::Service::User->handle_user_info($self->{env}, $token);
                 return $self->redirect("/#/my-view");
                 #return $self->render( 'Error' );
             },

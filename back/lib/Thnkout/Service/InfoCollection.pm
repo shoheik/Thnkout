@@ -17,18 +17,6 @@ sub add_collection {
     }else{
         debugf $theme_id . " is not in the database";
     }
-
-    #my $cursor = $db->mongodbh('theme')->find({_id => MongoDB::OID->new(value => $theme_id)}); 
-    #my @theme = $cursor->all;
-    #print Dumper $theme[0];
-    #if (defined $theme[0]){
-    #    my $row =$db->mongodbh('theme')->update(
-    #        {_id => MongoDB::OID->new(value => $theme_id)}, 
-    #        #{$theme[0] => { 'information_collection' => $data }}
-    #        {'$set' => { 'information_collection' => $data }}
-    #    );
-    #    return $row;
-    #return $db->mongodbh('theme')->insert({"name" => $theme});
 }    
 
 
