@@ -1,0 +1,27 @@
+{{ loggedIn }} - {{ id }} 
+<div class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <div class="navbar-brand">
+      <a href="#"><span id="title">Thnkout</span></a>
+      <small>&nbsp;&nbsp; 考えるためのプラットフォーム </small>
+    </div>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right" ng-show="!loggedIn">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ログイン<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="/oauth/twitter"><small>Twitterアカウントでログイン</small></a></li>
+         <li><a href="/oauth/facebook"><small>Facebookアカウントでログイン</small></a></li>
+        </ul>
+      </li>
+      <li><a href="../navbar-static-top/"><small>ヘルプ</small></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
+      <li>{{ screen_name }}</li>
+      <li><img src="{{ image_url }}"></li>
+      <li><a href="/logout">ログアウト</a></li>
+    </ul>
+  </div>
+</div>
+

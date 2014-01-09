@@ -87,6 +87,13 @@ sub get_twitter_user {
     return $row->get_columns; 
 }
 
+sub get_user {
+    my ($self, $user_id) = @_;
+    my $row = $self->mysql->single('user', +{id => $user_id});
+    return undef if (not defined $row);
+    return $row->get_columns; 
+}
+
 
 sub add_twitter_user {
     my ($self, $data) = @_;

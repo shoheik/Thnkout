@@ -28,7 +28,9 @@
 
     <!-- Add your site or application content here -->
 
+    <div ng-controller="LoginCtrl" ng-include="'views/header.html'"></div>
 
+    <!--
     <div class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
         <div class="navbar-brand">
@@ -49,6 +51,8 @@
         </ul>
       </div>
     </div>
+    -->
+
     <div ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -67,6 +71,7 @@
 
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -78,6 +83,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/filter.js"></script>
         <script src="scripts/services/ThemeService.js"></script>
+        <script src="scripts/services/LoginService.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -4,6 +4,7 @@ angular.module('thnkoutApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngRoute',
   'thnkoutFilters'
 ])
   .config(function ($routeProvider) {
@@ -11,6 +12,13 @@ angular.module('thnkoutApp', [
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+        //controller: 'LoginCtrl',
+        //resolve: {
+        //    info: function(LoginCheck){
+        //        console.log('here in resolve function');
+        //        return LoginCheck.getLoginInfo();
+        //    }
+        //}
       })
       .when('/output', {
         templateUrl: 'views/output.html',

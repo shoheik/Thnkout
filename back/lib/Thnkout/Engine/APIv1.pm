@@ -22,18 +22,20 @@ sub get_theme {
 sub get_login_info {
     my ($self, $context) = @_;
     debugf(Dumper $context->{env}->{'psgix.session'}); 
-    
     my $session = Plack::Session->new($context->{env});
     my $id = $session->get('id');
     my $status = $session->get('logged_in');
-    debugf "id:$id status:$status";
-    if( $status == 1){
+    #debugf "id:$id status:$status";
+    #debugf "status:$status";
+    if( defined $status && $status == 1){
         # logged in
-        my $user = Thnkout::Service::User->get_user_info();
+        my $user = Thnkout::Service::User->get_user_info($id);
+        $user->{status} = 'logged_in';
+        $context->json($user);
     }else{
         # not logged in
+        $context->json({ status => 'logged_out' });
     }
-    #print Dumper $Thnkout::model->mongodb;
 }
 
 sub post_theme {

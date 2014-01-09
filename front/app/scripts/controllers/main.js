@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('thnkoutApp')
-  .controller('MainCtrl', function ($scope, ThemeGenerator, $location, $http) {
+  .controller('MainCtrl', function ($scope, ThemeGenerator, $location, $http, $rootScope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -23,6 +23,11 @@ angular.module('thnkoutApp')
 
   })
   .controller('OutputCtrl', function ($scope) {
+  })
+  //.controller('LoginCtrl', ['$scope', 'info', function ($scope, info) {
+  .controller('LoginCtrl', function($scope, Login){
+      console.log('in LoginCtrl');
+      Login.getInfo($scope);
   })
   // controler to colletion information for the thinking
   .controller('InformationCollectionCtrl', function ($scope, $resource, $routeParams) {

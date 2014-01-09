@@ -56,6 +56,7 @@ sub handle_user_info {
 
 sub get_user_info {
     my ($self, $user_id) = @_;
+    return $Thnkout::model->get_user($user_id);
 }
 
 sub find_user_by_name {
