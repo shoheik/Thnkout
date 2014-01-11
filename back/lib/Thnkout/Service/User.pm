@@ -12,7 +12,15 @@ use Net::Twitter::Lite::WithAPIv1_1;
 use Thnkout::Config;
 use Log::Minimal;
 
-sub handle_user_info {
+# handle logout - just delete session
+sub handle_logout {
+    my ($self, $env) = @_;
+    my $session = Plack::Session->new($env);
+    $session->expire;
+}
+
+# handle login - use Sign service and store info to db
+sub handle_login {
     my ($self, $env, $token) = @_;
 
     # Twitter Sigin handling 
@@ -31,7 +39,6 @@ sub handle_user_info {
         if ( my $err = $@ ) {
              debugf $err;
         }
-
 
         if (defined $result){
             my $user = $Thnkout::model->get_twitter_user($token->{params}->{extra}->{user_id});

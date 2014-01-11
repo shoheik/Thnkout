@@ -8,6 +8,7 @@ use FindBin qw($Bin);
 use lib "$Bin/../lib";
 use Plack::Builder;
 use Plack::App::File;
+use Plack::Response;
 use Log::Minimal;
 use Thnkout;
 use Thnkout::Config;
@@ -20,8 +21,6 @@ my $root = config->root;
 builder {
     enable "Plack::Middleware::Session", store => 'File';
 
-    #enable 'Static', path => sub { s!^/static/!! }, root => "../front/dist/";
-    #mount "/" => Plack::App::File->new(root => "../front/dist")->to_app;
     # static for Single Page Application (SAP)
     enable 'DirIndex', dir_index => 'index.html';
     enable 
@@ -30,14 +29,23 @@ builder {
         root => "../front/dist/";
     mount '/' => $app;
 
+    # handle logout
+    mount '/logout' => sub {
+        my $env = shift;
+        Thnkout::Service::User->handle_logout($env);
+        my $res = Plack::Response->new; 
+        $res->redirect("/");
+        return $res->finalize;
+    };
+
     mount '/oauth' => builder {
         enable 'OAuth', 
             on_success => sub {
                 my ( $self, $token ) = @_;
                 debugf(Dumper $token);
                 debugf(Dumper $self);
-                Thnkout::Service::User->handle_user_info($self->{env}, $token);
-                return $self->redirect("/#/my-view");
+                Thnkout::Service::User->handle_login($self->{env}, $token);
+                return $self->redirect("/");
                 #return $self->render( 'Error' );
             },
  
