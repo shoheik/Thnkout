@@ -14,10 +14,15 @@ sub make_router {
         #    action => 'default',
         #};
 
-        connect '/api/v1/theme/:theme_id' => {
+       connect '/api/v1/theme/:theme_id' => {
             engine => 'APIv1',
             action => 'get_theme',
-        } => {method => 'GET' };
+       } => {method => 'GET' };
+
+       connect '/api/v1/themes/:user_id' => {
+            engine => 'APIv1',
+            action => 'get_themes',
+       } => {method => 'GET' };
 
         connect '/api/v1/login-info' => {
             engine => 'APIv1',

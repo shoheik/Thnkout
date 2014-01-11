@@ -63,6 +63,22 @@ sub get_theme_by_id {
     return $obj[0];
 }
 
+sub get_themes_by_user_id {
+    my ($self, $user_id ) = @_;
+    debugf "Getting theme by user_id:$user_id";
+    my $cursor = $self->mongodb->get_collection('theme')->find({"creator" => $user_id});
+    my @themes;
+    while (my $obj = $cursor->next) {
+        my $theme = {
+            id => $obj->{_id}->to_string,
+            name => $obj->{name},
+        };
+        push @themes, $theme;
+    }
+    debugf Dumper \@themes;
+    return \@themes;
+}
+
 sub update_theme {
     my ($self, $theme_id, $data) = @_;
 
@@ -93,7 +109,6 @@ sub get_user {
     return undef if (not defined $row);
     return $row->get_columns; 
 }
-
 
 sub add_twitter_user {
     my ($self, $data) = @_;

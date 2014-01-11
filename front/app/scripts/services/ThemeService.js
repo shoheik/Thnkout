@@ -7,7 +7,8 @@ angular.module('thnkoutApp')
             $http.post('/api/v1/theme', { theme: theme }).
             success(function(data,status,headers,config){
                 console.log(data);
-                $location.path("/main/");
+                var url = "/main/" + data.id;
+                $location.path(url);
             }).
             error(function(data,status,headers,config){
                 alert("ERROR1: Applogies. Please try later");
@@ -15,7 +16,17 @@ angular.module('thnkoutApp')
             });
         },
 
-        getThemes: function(userID){
+        // GET /api/v1/themes/userID - themes for the user 
+        getThemes: function(userID, scope){
+            var themesURL = '/api/v1/themes/' + userID;
+            $http({method: 'GET', url: themesURL }).
+            success(function(data, status, headers, config) {
+                scope.themes = data;
+            }).
+            error(function(data, status, headers, config) {
+                alert("ERROR3: Applogies. Please try later");
+                $location.path('/');
+            });
         },
     
         // GET /api/v1/theme/:themeID

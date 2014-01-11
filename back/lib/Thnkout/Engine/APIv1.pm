@@ -12,11 +12,19 @@ use Log::Minimal;
 sub get_theme {
     my ($self, $context) = @_;
     my $theme_id = $context->route->{theme_id};
-    debugf "Got $theme_id";
+    debugf "Got theme_id: $theme_id";
     my $theme = Thnkout::Service::Theme->find_theme_by_id($theme_id);
     $theme->{_id} = $theme->{_id}->to_string;
     $theme->{strategies} = { approaches => "" };
     $context->json($theme);
+}
+
+sub get_themes {
+    my ($self, $context) = @_;
+    my $user_id = $context->route->{user_id};
+    debugf "Got user_id: $user_id";
+    my @themes = Thnkout::Service::Theme->find_themes_by_user_id($user_id);
+    $context->json(@themes);
 }
 
 sub get_login_info {
@@ -37,6 +45,7 @@ sub get_login_info {
         $context->json({ status => 'logged_out' });
     }
 }
+
 
 sub post_theme {
     my ($self, $context) = @_;

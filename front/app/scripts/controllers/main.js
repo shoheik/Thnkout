@@ -24,7 +24,7 @@ angular.module('thnkoutApp')
       console.log($scope.theme);
       ThemeHandler.create($scope.theme);
     };
-    ThemeHandler.getThemes($rootScope.id);
+    ThemeHandler.getThemes($rootScope.id, $scope);
   })
   .controller('OutputCtrl', function ($scope) {
   })

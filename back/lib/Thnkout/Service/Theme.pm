@@ -11,6 +11,11 @@ sub find_theme_by_id {
     return $Thnkout::model->get_theme_by_id($theme_id);
 }
 
+sub find_themes_by_user_id {
+    my ($self, $user_id ) = @_;
+    return $Thnkout::model->get_themes_by_user_id($user_id);
+}
+
 sub create_theme {
     my ($self, $theme_name) = @_;
     my $user = "anonymous";
