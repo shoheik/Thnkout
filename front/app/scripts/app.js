@@ -10,15 +10,12 @@ angular.module('thnkoutApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
+        templateUrl: 'views/top.html',
+        controller: 'TopCtrl'
+      })
+      .when('/main/:themeID', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-        //controller: 'LoginCtrl',
-        //resolve: {
-        //    info: function(LoginCheck){
-        //        console.log('here in resolve function');
-        //        return LoginCheck.getLoginInfo();
-        //    }
-        //}
       })
       .when('/output', {
         templateUrl: 'views/output.html',

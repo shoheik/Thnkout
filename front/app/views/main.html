@@ -1,5 +1,21 @@
-{{ id }}
 <div class="content">
+  {{ id }}
+  <h2> テーマ: {{ data.name }} </h2>
+
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: selection == 'home'}"><a ng-click="clickTab('home')">情報収集</a></li>
+    <li ng-class="{active: selection == 'settings'}" ><a ng-click="clickTab('settings')">MECE</a></li>
+    <li><a href="#">SWOT</a></li>
+  </ul>
+
+  <br>
+  <div ng-switch on="selection">
+          <div  ng-switch-when="settings">Settings Div</div>
+          <div  ng-switch-when="home">Home Span</div>
+          <div  ng-switch-default>default</div>
+   </div>
+
+
   <div class="form-inline row" role="form">
     <div class="form-group col-md-6">
       <input type="text" class="form-control" id="" placeholder="考えるテーマをここに記入. 例) マスメディアの功罪について " ng-model="theme">
@@ -8,18 +24,9 @@
       <button type="button" class="btn btn-info" ng-click="createTheme(theme)">考える</button>
     </div>
   </div>
+
+
   <br>
-  <h2>考えるプラットフォームとは</h2>
-  考えるには型があるのをご存知でしょうか？
-  <br>
-  <h2>検索できない答えを考え出す</h2>
-  <h2>最近自分で考えていますか？</h2>
-  情報過多の時代。新聞やテレビ等のメディアでは情報を流し続けています。情報を集めることに日々一生懸命かもしれません。
-  しかし、それは情報のコピー。頭を使うのを止めてしまっている。自分自身の成長するために考えることから始めませんか？
-  <h2>フレームワークを利用する</h2>
-  <h2>集合知を利用する</h2>
-  <h2>価格</h2>
-  無料です。あなたが作成したテーマはパブリックとなります。プライベートのテーマを作成する場合は月額300円で利用可能です。
 </div>
 <br>
 

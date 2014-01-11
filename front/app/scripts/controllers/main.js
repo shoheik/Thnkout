@@ -1,26 +1,30 @@
 'use strict';
 
 angular.module('thnkoutApp')
-  .controller('MainCtrl', function ($scope, ThemeGenerator, $location, $http, $rootScope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
-    $scope.themes = ThemeGenerator.getThemes();
-
-    $scope.createTheme = function(theme){
-      console.log(theme);
-      $http.post('/api/v1/theme', { theme: theme }).
-      //$http({method: 'POST', url: '/api/v1/theme', data: JSON.stringify({theme_name: theme})})
-      success(function(data,status,headers,config){
-        console.log(data);
-        $location.path("/theme/" + data.id);
-      });
-      //$location.path( "/theme" );
+  .controller('MainCtrl', function ($scope, ThemeHandler, $location, $http, $rootScope, $routeParams) {
+    var themeID = $routeParams.themeID
+    ThemeHandler.getTheme(themeID, $scope);
+    $scope.clickTab = function(tabName){
+        $scope.selection = tabName;
     };
-
+    //$scope.createTheme = ThemeHandler.create($scope.theme);
+    //$scope.createTheme = function(theme){
+    //  console.log(theme);
+    //  $http.post('/api/v1/theme', { theme: theme }).
+    //  //$http({method: 'POST', url: '/api/v1/theme', data: JSON.stringify({theme_name: theme})})
+    //  success(function(data,status,headers,config){
+    //    console.log(data);
+    //    $location.path("/theme/" + data.id);
+    //  });
+    //  //$location.path( "/theme" );
+    //};
+  })
+  .controller('TopCtrl', function ($scope, $rootScope, ThemeHandler) {
+    $scope.createTheme = function(){
+      console.log($scope.theme);
+      ThemeHandler.create($scope.theme);
+    };
+    ThemeHandler.getThemes($rootScope.id);
   })
   .controller('OutputCtrl', function ($scope) {
   })
