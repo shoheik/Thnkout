@@ -6,6 +6,8 @@ use Carp;
 use DateTime;
 use Data::Dumper;
 use Log::Minimal;
+use Thnkout::Util;
+use Thnkout::Service::User;
 
 sub find_theme_by_id {
     my ($self, $theme_id ) = @_;
@@ -32,11 +34,23 @@ sub get_summary_markdown {
 }
 
 sub create_theme {
-    my ($self, $theme_name) = @_;
-    my $user = "anonymous";
-    #my $datatime = 'xx';
-    return $Thnkout::model->create_theme({"name" => $theme_name, "creator" => $user });
-    #return $db->mongodbh('theme')->insert({"name" => $theme});
+    my ($self, $theme_name, $user) = @_;
+    my $user_name;
+    my $user_id;
+    debugf Dumper $user;
+    my $visibility = "public";
+    if (defined $user){
+        $user_name = $user->{screen_name};
+        $user_id = $user->{id};
+        if (Thnkout::Service::User->is_under_private_limit($user->{id})){
+            $visibility = "private";
+        }
+    }else{
+        $user_name = "anonymous";
+        $user_id = "0";
+    }
+    my $datetime = Thnkout::Util->get_current_datetime();
+    return $Thnkout::model->create_theme({"name" => $theme_name, "creator" => $user_name, "createdAt" => $datetime, "visibility" => $visibility, "creator_id" => $user_id });
 }    
 
 sub compose_info_collection{

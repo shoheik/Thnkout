@@ -60,7 +60,8 @@ sub post_theme {
     # POST is in body
     my $data = decode_json $context->request->content;
     debugf $data->{theme} . "is POST'ed";
-    my $oid = Thnkout::Service::Theme->create_theme($data->{theme});
+    my $user_session = $context->get_user_in_session() ;
+    my $oid = Thnkout::Service::Theme->create_theme($data->{theme}, $user_session); 
     debugf $oid->to_string . " is created for the new theme";
     $context->json({id => $oid->to_string });
 }

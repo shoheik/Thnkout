@@ -57,6 +57,7 @@ sub handle_login {
             my $session = Plack::Session->new($env);
             $session->set('logged_in', 1);
             $session->set('id', $user->{id});
+            $session->set('screen_name', $user->{screen_name});
         }
     }
 }
@@ -108,6 +109,11 @@ sub create {
     return $class->find_user_by_name($db, {
         name => $name,
     });
+}
+
+sub is_under_private_limit {
+    my ($self, $user_id) = @_;
+    return 1;
 }
 
 1;

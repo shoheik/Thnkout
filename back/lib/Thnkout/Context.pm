@@ -108,16 +108,19 @@ sub error {
     Thnkout::Error->throw($code, $message, %opts);
 }
 
-### DB Access
-#sub _build_db {
-#    my ($self) = @_;
-#    return Thnkout::DBI::Factory->new;
-#}
-#
-#sub dbh {
-#    my ($self, $name) = @_;
-#    return $self->db->dbh($name);
-#}
+sub get_user_in_session {
+    my $self = shift;
+    my $session = Plack::Session->new($self->env);
+    my $logged_in = $session->get('logged_in');
+    if(defined $logged_in && $logged_in == 1){
+        my $id = $session->get('id');
+        my $screen_name = $session->get('screen_name');
+        return { id => $id, screen_name => $screen_name };
+    }else{
+        return undef;
+    }
+}
+
 
 # Utility
 #sub user {
