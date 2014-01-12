@@ -27,6 +27,14 @@ sub get_themes {
     $context->json(@themes);
 }
 
+sub get_summary {
+    my ($self, $context) = @_;
+    my $theme_id = $context->route->{theme_id};
+    debugf "Got theme_id: $theme_id";
+    my $summary = Thnkout::Service::Theme->get_summary_markdown($theme_id);
+    $context->json({summary => $summary});
+}
+
 sub get_login_info {
     my ($self, $context) = @_;
     debugf(Dumper $context->{env}->{'psgix.session'}); 

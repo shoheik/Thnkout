@@ -10,6 +10,11 @@
   </div>
   <br>
   {{ themes }}
+  
+  <ul class="list-unstyled">
+    <li ng-repeat="theme in themes"><a href="/#/main/{{ theme.id }}">{{ theme.name}}</a></li>
+  </ul>
+
   <h2>考えるプラットフォームとは</h2>
   考えるには型があるのをご存知でしょうか？
   <br>

@@ -11,7 +11,10 @@
   <br>
   <div ng-switch on="selection" ng-init="selection='summary'">
     
-    <div  ng-switch-when="summary">Summary</div>
+    <div ng-switch-when="summary">
+      <!-- <div ng-include="'views/summary.html'" ng-controller="summaryCtrl" ng-init='theme_ID=data.name'></div> -->
+      <div ng-include="'views/summary.html'" ng-controller="summaryCtrl"></div>
+    </div>
 
     <div ng-switch-when="infoCollection">
       <div ng-controller="InformationCollectionCtrl" ng-include="'views/information-collection.html'"></div>

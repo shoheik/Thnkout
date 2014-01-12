@@ -28,6 +28,16 @@ angular.module('thnkoutApp')
                 $location.path('/');
             });
         },
+
+        // get summary that is markdown text
+        getSummary: function (themeID, scope){
+            var summaryURL = '/api/v1/summary/' + themeID;
+            $http({method: 'GET', url: summaryURL }).
+            success(function(data, status, headers, config) {
+                console.log(data.summary);
+                scope.summary = marked(data.summary);
+            });
+        },
     
         // GET /api/v1/theme/:themeID
         getTheme: function(themeID, scope){

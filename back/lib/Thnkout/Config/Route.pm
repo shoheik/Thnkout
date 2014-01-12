@@ -9,20 +9,21 @@ use Router::Simple::Declare;
 sub make_router {
     return router {
 
-        #connect '/' => {
-        #    engine => 'Index',
-        #    action => 'default',
-        #};
 
-       connect '/api/v1/theme/:theme_id' => {
-            engine => 'APIv1',
-            action => 'get_theme',
-       } => {method => 'GET' };
+        connect '/api/v1/theme/:theme_id' => {
+             engine => 'APIv1',
+             action => 'get_theme',
+        } => {method => 'GET' };
 
-       connect '/api/v1/themes/:user_id' => {
-            engine => 'APIv1',
-            action => 'get_themes',
-       } => {method => 'GET' };
+        connect '/api/v1/themes/:user_id' => {
+             engine => 'APIv1',
+             action => 'get_themes',
+        } => {method => 'GET' };
+
+        connect '/api/v1/summary/:theme_id' => {
+             engine => 'APIv1',
+             action => 'get_summary',
+        } => {method => 'GET' };
 
         connect '/api/v1/login-info' => {
             engine => 'APIv1',
@@ -38,6 +39,7 @@ sub make_router {
             engine => 'APIv1',
             action => 'post_theme',
         } => { method => 'POST' };
+
 
     };
 }
