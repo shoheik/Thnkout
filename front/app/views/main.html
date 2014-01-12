@@ -1,6 +1,6 @@
 <div class="content">
   {{ id }}
-  <h2> テーマ: {{ data.name }} </h2>
+  <h3> テーマ: {{ data.name }} </h3>
   <br>
   <ul class="nav nav-tabs">
     <li ng-class="{active: selection == 'summary'}"><a ng-click="clickTab('summary')">サマリー</a></li>
@@ -12,7 +12,6 @@
   <div ng-switch on="selection" ng-init="selection='summary'">
     
     <div ng-switch-when="summary">
-      <!-- <div ng-include="'views/summary.html'" ng-controller="summaryCtrl" ng-init='theme_ID=data.name'></div> -->
       <div ng-include="'views/summary.html'" ng-controller="summaryCtrl"></div>
     </div>
 

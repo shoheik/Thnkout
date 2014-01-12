@@ -22,7 +22,7 @@ sub get_summary_markdown {
     my $theme = $Thnkout::model->get_theme_by_id($theme_id);
 
     # title is theme name
-    my $markdown = '#' .  $theme->{name} . "\n";
+    my $markdown = '#テーマ: ' .  $theme->{name} . "\n";
 
     # for information collection
     $markdown .= $self->compose_info_collection($theme);
@@ -48,6 +48,7 @@ sub compose_info_collection{
             for my $point ( @{ $source->{points} }){
                 $markdown .= "* $point\n";
             }
+            $markdown .= "\n";
         }
         return $markdown;
     } else {

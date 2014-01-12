@@ -3,7 +3,6 @@ package Thnkout::Context;
 use utf8;
 use Moo;
 use Try::Tiny;
-use Thnkout::DBI::Factory;
 use Thnkout::Config;
 use Thnkout::Request;
 use Thnkout::Error;
@@ -110,15 +109,15 @@ sub error {
 }
 
 ### DB Access
-sub _build_db {
-    my ($self) = @_;
-    return Thnkout::DBI::Factory->new;
-}
-
-sub dbh {
-    my ($self, $name) = @_;
-    return $self->db->dbh($name);
-}
+#sub _build_db {
+#    my ($self) = @_;
+#    return Thnkout::DBI::Factory->new;
+#}
+#
+#sub dbh {
+#    my ($self, $name) = @_;
+#    return $self->db->dbh($name);
+#}
 
 # Utility
 #sub user {
