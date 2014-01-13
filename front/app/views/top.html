@@ -1,4 +1,3 @@
-{{ id }}
 <div class="content">
   <div class="form-inline row" role="form">
     <div class="form-group col-md-6">
@@ -10,17 +9,64 @@
   </div>
   <br>
 
-  <ul class="list-unstyled">
-    <li ng-repeat="theme in themes"><a href="/#/main/{{ theme.id }}">{{ theme.name}}</a></li>
-  </ul>
+
+
+
+
+    <!-- Service Blcoks -->
+    <div class="row servive-block margin-bottom-10">
+        <div class="col-md-3 col-sm-6">
+          <div class="servive-block-in servive-block-colored servive-block-green">
+            <h4>考えていますか？</h4> 
+            <div><i class="icon-bell"></i></div>
+            <br>
+            <p>
+              情報過多の時代。新聞やテレビ等のメディアでは情報を流し続けています。情報を集めることに日々一生懸命かもしれません。
+              しかし、それは情報のコピー。頭を使うのを止めてしまっている。自分自身の成長するために考えることから始めませんか？
+            </p>
+          </div>
+
+          <br>
+
+          <div class="servive-block-in servive-block-colored servive-block-grey">            
+            <h4>Great Grey Box</h4>
+            <div><i class="icon-globe"></i></div>
+            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+          </div>
+
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="servive-block-in servive-block-colored servive-block-red">
+            <h4>Reddde Box</h4>
+            <div><i class="icon-bullhorn"></i></div>
+            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+          </div>
+
+          <br>
+
+          <div class="servive-block-in servive-block-colored servive-block-sea">            
+            <h4>Amazing Box</h4>
+            <div><i class="icon-lightbulb"></i></div>
+            <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
+          </div>
+          
+        </div>
+        <div class="col-md-3 col-sm-6">
+
+          <ul class="list">
+            <li ng-repeat="theme in themes"><a href="/#/main/{{ theme.id }}">{{ theme.name}}</a></li>
+          </ul>
+
+        </div>
+        <div class="col-md-3 col-sm-6">
+        </div>
+    </div><!--/servive-block-->
+
 
   <h2>考えるプラットフォームとは</h2>
   考えるには型があるのをご存知でしょうか？
   <br>
   <h2>検索できない答えを考え出す</h2>
-  <h2>最近自分で考えていますか？</h2>
-  情報過多の時代。新聞やテレビ等のメディアでは情報を流し続けています。情報を集めることに日々一生懸命かもしれません。
-  しかし、それは情報のコピー。頭を使うのを止めてしまっている。自分自身の成長するために考えることから始めませんか？
   <h2>フレームワークを利用する</h2>
   <h2>集合知を利用する</h2>
   <h2>価格</h2>

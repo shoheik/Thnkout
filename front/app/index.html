@@ -15,6 +15,21 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+        <!-- CSS Global Compulsory -->
+        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/headers/header1.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <!-- CSS Implementing Plugins -->
+        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css" />
+        <link rel="stylesheet" href="assets/plugins/parallax-slider/css/parallax-slider.css" />
+        <!-- CSS Theme -->
+        <link rel="stylesheet" href="assets/css/themes/default.css" />
+        <link rel="stylesheet" href="assets/css/themes/headers/default.css" />
+
 </head>
   <body ng-app="thnkoutApp">
     <!--[if lt IE 7]>
@@ -29,30 +44,6 @@
     <!-- Add your site or application content here -->
 
     <div ng-controller="LoginCtrl" ng-include="'views/header.html'"></div>
-
-    <!--
-    <div class="navbar navbar-default" role="navigation">
-      <div class="navbar-header">
-        <div class="navbar-brand">
-          <a href="#"><span id="title">Thnkout</span></a>
-          <small>&nbsp;&nbsp; 考えるためのプラットフォーム </small>
-        </div>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">ログイン<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-             <li><a href="/oauth/twitter"><small>Twitterアカウントでログイン</small></a></li>
-             <li><a href="/oauth/facebook"><small>Facebookアカウントでログイン</small></a></li>
-            </ul>
-          </li>
-          <li><a href="../navbar-static-top/"><small>ヘルプ</small></a></li>
-        </ul>
-      </div>
-    </div>
-    -->
-
     <div ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

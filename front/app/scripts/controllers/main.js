@@ -12,6 +12,7 @@ angular.module('thnkoutApp')
   })
   // Top page which user see firstly
   .controller('TopCtrl', function ($scope, $rootScope, ThemeHandler) {
+    console.log("id:" + $scope.id);
     $scope.createTheme = function(){
       console.log($scope.theme);
       ThemeHandler.create($scope.theme);
@@ -25,8 +26,8 @@ angular.module('thnkoutApp')
   })
   //.controller('LoginCtrl', ['$scope', 'info', function ($scope, info) {
   .controller('LoginCtrl', function($scope, Login){
-      console.log('in LoginCtrl');
       Login.getInfo($scope);
+      console.log("loggedIn: " + $scope.loggedIn + ", id: " + $scope.id + ", screen_name: " + $scope.screen_name);
   })
   // controler to colletion information for the thinking
   .controller('InformationCollectionCtrl', function ($scope, $resource, $routeParams) {

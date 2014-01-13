@@ -50,7 +50,15 @@ sub create_theme {
         $user_id = "0";
     }
     my $datetime = Thnkout::Util->get_current_datetime();
-    return $Thnkout::model->create_theme({"name" => $theme_name, "creator" => $user_name, "createdAt" => $datetime, "visibility" => $visibility, "creator_id" => $user_id });
+    return $Thnkout::model->create_theme({
+                "name" => $theme_name, 
+                "creator" => $user_name, 
+                "createdAt" => $datetime, 
+                "visibility" => $visibility, 
+                like => 0,
+                dislike => 0,
+                "creator_id" => $user_id 
+            });
 }    
 
 sub compose_info_collection{

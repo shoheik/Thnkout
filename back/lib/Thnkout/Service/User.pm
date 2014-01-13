@@ -94,7 +94,6 @@ sub find_users_by_user_ids {
 
 sub create {
     my ($class, $db, $args) = @_;
-
     my $name = $args->{name} // croak 'name required';
 
     $db->dbh('intern_bookmark')->query(q[
@@ -113,7 +112,8 @@ sub create {
 
 sub is_under_private_limit {
     my ($self, $user_id) = @_;
-    return 1;
+    #return 1; # private
+    return 0; # public
 }
 
 1;

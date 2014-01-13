@@ -25,7 +25,7 @@ builder {
     enable 'DirIndex', dir_index => 'index.html';
     enable 
         'Static', 
-        path => qr{^/index.html$|^/scripts|^/styles|^/bower_components|^/views|^/404.html$|^/favicon.ico$|^/robot.txt$}, 
+        path => qr{^/index.html$|^/scripts|^/assets|^/styles|^/bower_components|^/views|^/404.html$|^/favicon.ico$|^/robot.txt$}, 
         root => "../front/dist/";
     mount '/' => $app;
 
