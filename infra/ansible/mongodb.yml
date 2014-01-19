@@ -1,0 +1,14 @@
+---
+- hosts: servers 
+  user: root
+  tasks:
+    - name: create repository for packages
+      copy: src=files/mongodb.repo dest=/etc/yum.repos.d/mongodb.repo
+    - name: install mongodb pacakges
+      yum: name=mongo-10gen state=latest 
+      yum: name=mongo-10gen-server state=latest
+    - name: config mongodb
+      command: /sbin/chkconfig mongod on
+    - name: start mongodb
+      command: /etc/init.d/mongod start
+       

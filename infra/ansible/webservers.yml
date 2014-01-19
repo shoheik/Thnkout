@@ -1,0 +1,4 @@
+---
+- hosts: thnkout.com
+  roles:
+    - common

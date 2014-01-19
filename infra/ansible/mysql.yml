@@ -1,0 +1,22 @@
+---
+- hosts: servers 
+  user: root
+  tasks:
+   # - name: installl mysql packages 
+   #   yum: name=mysql state=latest
+   #   yum: name=mysql-devel state=latest
+   #   yum: name=mysql-server state=latest
+   # - name: configure mysql
+   #   command: /sbin/chkconfig mysqld on
+   #   command: /etc/init.d/mysqld start 
+    - name: create users/database 
+      script: files/mysql_start.sh
+
+#    - name: install mongodb pacakges
+#      yum: name=mongo-10gen state=latest 
+#      yum: name=mongo-10gen-server state=latest
+#    - name: config mongodb
+#      command: /sbin/chkconfig mongod on
+#    - name: start mongodb
+#      command: /etc/init.d/mongod start
+       

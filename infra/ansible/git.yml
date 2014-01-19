@@ -1,0 +1,10 @@
+---
+- hosts: servers 
+  user: root
+  tasks:
+    - name: install the latest git 
+      command: rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+      command: rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+    - name: install git with yum
+      yum: name=git enablerepo=rpmforge
+       
