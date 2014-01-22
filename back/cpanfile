@@ -26,4 +26,5 @@ requires 'Net::Twitter::Lite';
 requires 'Teng';
 requires 'DBD::mysql';
 requires 'Class::Singleton';
+requires 'Path::Class';
 

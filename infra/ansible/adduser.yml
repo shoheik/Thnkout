@@ -5,3 +5,6 @@
     - name: add user 
       user: name=kamesho 
     - authorized_key: user=kamesho key="{{ lookup('file', '/Users/kamesho/.ssh/id_rsa.pub') }}"
+    - name: add user 
+      user: name=thnkout 
+    - authorized_key: user=thnkout key="{{ lookup('file', '/Users/kamesho/.ssh/id_rsa.pub') }}"

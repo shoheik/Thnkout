@@ -10,5 +10,16 @@
 ## run playbook
     $ ansible-playbook -i ./hosts adduser.yml
 
+## yo needs to be run manually as it's prompted,,,
+
+    $ cd Thnkout/front
+    $ yo angular
+
+    $ cd Thnkout/front
+    $ grunt server # to make sure it can be up
+    $ grunt build
+
+    $ cd ../back
+    $ mysql -u thnkout -D thnkout_test -p < db/schema.sql
 
 

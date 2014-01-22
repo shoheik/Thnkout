@@ -1,0 +1,7 @@
+---
+- hosts: servers 
+  user: thnkout
+  tasks:
+    - name: install perlenv 
+      script: files/perlenv.sh 
+       

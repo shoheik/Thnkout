@@ -1,0 +1,9 @@
+---
+- hosts: servers 
+  user: thnkout 
+  tasks:
+    - name: install nvm 
+      command: 'curl https://raw.github.com/creationix/nvm/master/install.sh | sh'
+    - name: install node 
+      script : files/nodeenv.sh
+       
