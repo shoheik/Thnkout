@@ -12,6 +12,8 @@
 
 ## yo needs to be run manually as it's prompted,,,
 
+    $ git clone https://github.com/shoheik/Thnkout.git
+
     $ cd Thnkout/front
     $ yo angular
 

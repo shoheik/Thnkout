@@ -30,6 +30,7 @@ sub handle_login {
             consumer_secret     => config->param('twitter')->{consumer_secret},
             access_token        => $token->{params}->{access_token},
             access_token_secret => $token->{params}->{access_token_secret},
+            ssl                 => 1,  ## enable SSL! ##
         );
         my $result;
         eval{
