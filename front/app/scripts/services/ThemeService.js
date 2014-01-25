@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('thnkoutApp')
-.factory('ThemeHandler', function ($location, $http){
+.factory('ThemeHandler', ['$location', '$http', function ($location, $http){
     return {
         create: function(theme){
             $http.post('/api/v1/theme', { theme: theme }).
@@ -52,4 +52,4 @@ angular.module('thnkoutApp')
         }
 
     }
-});
+}]);

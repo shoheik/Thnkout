@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('thnkoutApp')
-//.factory('Login', ['$http', function ($http){
-.factory('Login', function ($http, $rootScope) {
+.factory('Login', ['$http', '$rootScope', function ($http, $rootScope) {
     return {
         getInfo: function($scope){
             console.log('here in LoginCheck');
@@ -25,4 +24,4 @@ angular.module('thnkoutApp')
                 });
         }
     }
-});
+}]);

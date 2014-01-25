@@ -4,10 +4,10 @@ angular.module('thnkoutApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'thnkoutFilters'
+  'ngRoute'
+  //'thnkoutFilters'
 ])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/top.html',
@@ -36,4 +36,4 @@ angular.module('thnkoutApp', [
       //.otherwise({
       //  redirectTo: '/'
       //});
-  });
+  }]);

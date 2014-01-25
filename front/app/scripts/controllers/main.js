@@ -1,37 +1,45 @@
 'use strict';
 
 angular.module('thnkoutApp')
-  // main page for theme
-  .controller('MainCtrl', function ($scope, ThemeHandler, $location, $http, $rootScope, $routeParams) {
+// main page for theme
+.controller('MainCtrl', ['$scope', 'ThemeHandler', '$location', '$http', '$rootScope', '$routeParams', 
+  function ($scope, ThemeHandler, $location, $http, $rootScope, $routeParams) {
     var themeID = $routeParams.themeID;
     $scope.themeID = themeID;
     ThemeHandler.getTheme(themeID, $scope);
     $scope.clickTab = function(tabName){
         $scope.selection = tabName;
     };
-  })
-  // Top page which user see firstly
-  .controller('TopCtrl', function ($scope, $rootScope, ThemeHandler) {
+  }
+])
+// Top page which user see firstly
+.controller('TopCtrl', ['$scope', '$rootScope', 'ThemeHandler', 
+  function ($scope, $rootScope, ThemeHandler) {
     console.log("id:" + $scope.id);
     $scope.createTheme = function(){
       console.log($scope.theme);
       ThemeHandler.create($scope.theme);
     };
     ThemeHandler.getThemes("anonymous", $scope);
-  })
-  .controller('summaryCtrl', function ($scope, $rootScope, ThemeHandler) {
+  }
+])
+.controller('summaryCtrl', ['$scope', '$rootScope', 'ThemeHandler', 
+  function ($scope, $rootScope, ThemeHandler) {
     console.log("here is " + $scope.themeID);
     //$scope.summary = marked("#test");
     ThemeHandler.getSummary($scope.themeID, $scope);
-  })
-  //.controller('LoginCtrl', ['$scope', 'info', function ($scope, info) {
-  .controller('LoginCtrl', function($scope, Login){
-      Login.getInfo($scope);
-      console.log("loggedIn: " + $scope.loggedIn + ", id: " + $scope.id + ", screen_name: " + $scope.screen_name);
-  })
-  // controler to colletion information for the thinking
-  .controller('InformationCollectionCtrl', function ($scope, $resource, $routeParams) {
+  }
+])
+.controller('LoginCtrl', ['$scope', 'Login', 
+  function($scope, Login){
+    Login.getInfo($scope);
+    console.log("loggedIn: " + $scope.loggedIn + ", id: " + $scope.id + ", screen_name: " + $scope.screen_name);
+  }
+])
 
+// controler to colletion information for the thinking
+.controller('InformationCollectionCtrl', ['$scope', '$resource', '$routeParams', 
+  function ($scope, $resource, $routeParams) {
     $scope.collection = {};
     console.log($routeParams.themeID);
     var themeURL = '/api/v1/theme/' + $routeParams.themeID;
@@ -134,8 +142,10 @@ angular.module('thnkoutApp')
     };
 */
 
-  })
-  .controller('ThemeCtrl', function ($scope, $routeParams, $http) {
+  }
+])
+.controller('ThemeCtrl', ['$scope', '$routeParams', '$http', 
+  function ($scope, $routeParams, $http) {
 
     // Get parameter on URL
     $scope.themeID = $routeParams.themeID
@@ -254,7 +264,9 @@ angular.module('thnkoutApp')
       $scope.data.theme.strategies[strategy].approaches[approach].unshift(idea);
     }
 
-  })
-  .controller('ViewCtrl', function ($scope, ThemeGenerator) {
+  }
+])
+.controller('ViewCtrl', ['$scope', 'ThemeGenerator', function ($scope, ThemeGenerator) {
     $scope.themes = ThemeGenerator.getThemes();
-  });
+  }
+]);
